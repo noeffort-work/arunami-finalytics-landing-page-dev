@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Finalytics</title>
+  </head>
+  <body class="font-inter bg-gray-50">
+    <!-- Navbar -->
+    <nav class="sticky top-0 bg-gray-50 z-50">
+      <div
+        class="max-w-7xl mx-auto flex items-center justify-between px-4 py-4"
+      >
+        <!-- Logo -->
+        <div class="text-2xl font-bold">Logo</div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-6">
+          <a
+            href="#features"
+            class="hover:text-gray-800 text-gray-600 hover:bg-gray-100 rounded-md px-2 py-1 hover:font-medium"
+            >Features</a
+          >
+          <a
+            href="#pricing"
+            class="hover:text-gray-800 text-gray-600 hover:bg-gray-100 rounded-md px-2 py-1 hover:font-medium"
+            >Pricing</a
+          >
+          <a
+            href="#faq"
+            class="hover:text-gray-800 text-gray-600 hover:bg-gray-100 rounded-md px-2 py-1 hover:font-medium"
+            >FAQ</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-gray-800 text-gray-600 hover:bg-gray-100 rounded-md px-2 py-1 hover:font-medium"
+            >Contact</a
+          >
+        </div>
+
+        <!-- Login -->
+        <a
+          href="#"
+          class="hidden md:block bg-indigo-500 text-white px-5 py-2 rounded-md font-semibold hover:bg-indigo-600"
+        >
+          Login
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden">
+          <svg
+            class="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden flex flex-col gap-4 px-6 py-4 bg-gray-50"
+      >
+        <a href="#features" class="text-gray-800">Features</a>
+        <a href="#pricing" class="text-gray-800">Pricing</a>
+        <a href="#faq" class="text-gray-800">FAQ</a>
+        <a href="#contact" class="text-gray-800">Contact</a>
+        <a
+          href="#"
+          class="bg-indigo-500 text-white text-center px-4 py-2 rounded-md"
+          >Login</a
+        >
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="hero" class="px-4 sm:px-6 mt-12 text-center">
+      <div class="max-w-3xl mx-auto space-y-6">
+        <span
+          class="w-fit mx-auto flex bg-indigo-50 gap-1 text-indigo-600 px-3 py-1 rounded-md font-medium"
+        >
+          <img src="./assets/ai.svg" alt="" srcset="" />
+          AI Powered
+        </span>
+        <h1
+          class="text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight tracking-tighter"
+        >
+          An AI-powered platform that works like your
+          <span
+            class="bg-indigo-100 text-indigo-600 px-2 rounded-lg leading-tight font-semibold"
+            >Analyst</span
+          >
+        </h1>
+        <p class="text-gray-600 text-base sm:text-lg">
+          From sales reports to profit & loss, everything is designed to keep
+          your business one step ahead. Our AI helps you plan smarter, hit
+          targets, and make confident decisions.
+        </p>
+        <a
+          href="#"
+          class="inline-block bg-indigo-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-600"
+        >
+          Get Started
+        </a>
+
+        <!-- Hero Image -->
+        <div class="mt-10">
+          <img
+            src="./assets/dashboard-preview.png"
+            alt="Dashboard preview"
+            class="w-full rounded-xl shadow"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto text-center space-y-6">
+        <span
+          class="w-fit mx-auto flex bg-indigo-50 gap-1 text-indigo-600 px-3 py-1 rounded-md font-medium"
+        >
+          <img src="./assets/features.svg" alt="" srcset="" />
+          Features
+        </span>
+        <h2
+          class="text-2xl sm:text-3xl lg:text-4xl font-medium leading-tight tracking-tighter"
+        >
+          Everything you need <br />
+          to understand your
+          <span
+            class="bg-indigo-100 text-indigo-600 px-2 rounded-lg font-semibold"
+            >Business Data</span
+          >
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          From sales tracking to profit & loss reports, every feature is built
+          to help you see your numbers clearly.
+        </p>
+      </div>
+      <div class="mt-12 mx-auto max-w-6xl px-4">
+        <div class="flex flex-col-reverse md:flex-row gap-8 items-start">
+          <!-- LEFT: Feature list -->
+          <div class="w-full">
+            <ul class="space-y-3">
+              <!-- active item: has bg + desc shown -->
+              <li
+                class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
+                data-image="/assets/image-ai.png"
+                role="button"
+                tabindex="0"
+                aria-selected="true"
+              >
+                <div class="flex-shrink-0 self-start">
+                  <!-- icon -->
+                  <div
+                    class="icon w-8 h-8 [mask:url(/assets/ai-black.svg)_center/contain_no-repeat]"
+                  ></div>
+                </div>
+                <div class="flex-1">
+                  <div class="title text-lg font-semibold">AI Analysis</div>
+                  <p class="desc mt-2 text-gray-600">
+                    Let AI analyze your data for you. Receive smart
+                    recommendations that help you make faster, smarter business
+                    decisions.
+                  </p>
+                </div>
+              </li>
+              <li
+                class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
+                data-image="/assets/image-compare.png"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+              >
+                <div class="flex-shrink-0 self-start">
+                  <!-- icon -->
+                  <div
+                    class="icon w-8 h-8 [mask:url(/assets/chart.svg)_center/contain_no-repeat]"
+                  ></div>
+                </div>
+                <div class="flex-1">
+                  <div class="title text-lg font-semibold">Data Comparison</div>
+                  <p class="desc mt-2 text-gray-600">
+                    Let AI analyze your data for you. Receive smart
+                    recommendations that help you make faster, smarter business
+                    decisions.
+                  </p>
+                </div>
+              </li>
+              <li
+                class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
+                data-image="/assets/image-summary.png"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+              >
+                <div class="flex-shrink-0 self-start">
+                  <!-- icon -->
+                  <div
+                    class="icon w-8 h-8 [mask:url(/assets/summary.svg)_center/contain_no-repeat]"
+                  ></div>
+                </div>
+                <div class="flex-1">
+                  <div class="title text-lg font-semibold">
+                    Data Summarization
+                  </div>
+                  <p class="desc mt-2 text-gray-600">
+                    Let AI analyze your data for you. Receive smart
+                    recommendations that help you make faster, smarter business
+                    decisions.
+                  </p>
+                </div>
+              </li>
+              <li
+                class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
+                data-image="/assets/image-data.png"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+              >
+                <div class="flex-shrink-0 self-start">
+                  <!-- icon -->
+                  <div
+                    class="icon w-8 h-8 [mask:url(/assets/data.svg)_center/contain_no-repeat]"
+                  ></div>
+                </div>
+                <div class="flex-1">
+                  <div class="title text-lg font-semibold">Data Management</div>
+                  <p class="desc mt-2 text-gray-600">
+                    Let AI analyze your data for you. Receive smart
+                    recommendations that help you make faster, smarter business
+                    decisions.
+                  </p>
+                </div>
+              </li>
+              <li
+                class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
+                data-image="/assets/image-calculate.png"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+              >
+                <div class="flex-shrink-0 self-start">
+                  <!-- icon -->
+                  <div
+                    class="icon w-8 h-8 [mask:url(/assets/calculate.svg)_center/contain_no-repeat]"
+                  ></div>
+                </div>
+                <div class="flex-1">
+                  <div class="title text-lg font-semibold">
+                    Auto-Calculation
+                  </div>
+                  <p class="desc mt-2 text-gray-600">
+                    Let AI analyze your data for you. Receive smart
+                    recommendations that help you make faster, smarter business
+                    decisions.
+                  </p>
+                </div>
+              </li>
+              <li
+                class="feature-item flex gap-3 p-4 rounded-xl hover:bg-gray-100 cursor-pointer transition"
+                data-image="/assets/image-export.png"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+              >
+                <div class="flex-shrink-0 self-start">
+                  <!-- icon -->
+                  <div
+                    class="icon w-8 h-8 [mask:url(/assets/pdf.svg)_center/contain_no-repeat]"
+                  ></div>
+                </div>
+                <div class="flex-1">
+                  <div class="title text-lg font-semibold">Export to PDF</div>
+                  <p class="desc mt-2 text-gray-600">
+                    Let AI analyze your data for you. Receive smart
+                    recommendations that help you make faster, smarter business
+                    decisions.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- RIGHT: Image / visual -->
+          <div class="w-full p-1.5 bg-gray-100 rounded-xl">
+            <img
+              id="featureImage"
+              src="/assets/image-ai.png"
+              alt="Feature preview"
+              class="max-h-full w-full object-contain transition-opacity duration-300"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="px-4 sm:px-6 py-20">
+      <div class="max-w-6xl mx-auto text-center space-y-6">
+        <span
+          class="w-fit mx-auto flex bg-indigo-50 gap-1 text-indigo-600 px-3 py-1 rounded-md font-medium"
+        >
+          <img src="./assets/pricing.svg" alt="" srcset="" />
+          Pricing
+        </span>
+        <h2
+          class="text-2xl sm:text-3xl lg:text-4xl font-medium leading-tight tracking-tighter"
+        >
+          Choose the plan that fits your
+          <span
+            class="bg-indigo-100 text-indigo-600 px-2 rounded-lg font-semibold"
+            >Business</span
+          >
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Whether you’re just starting or already growing, we have simple plans
+          to help you track sales, manage profit & loss, and stay on top of your
+          business.
+        </p>
+      </div>
+
+      <!-- Pricing Cards -->
+
+      <div class="mt-12 grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
+        <!-- Starter -->
+        <div class="bg-gray-100 rounded-xl p-0.5">
+          <div class="text-center label px-4 py-2 text-gray-500">
+            Great for individuals and small shops
+          </div>
+          <div class="content px-4 py-5 bg-gray-50 gap-10 grid">
+            <div class="heading">
+              <p class="font-semibold tracking-tighter text-2xl">Starter</p>
+              <p class="text-gray-500">
+                All the basic tools you need to record sales and keep your
+                reports organized.
+              </p>
+            </div>
+            <div class="price p-3 gap-4 grid border rounded-md border-gray-100">
+              <p class="text-gray-500">
+                Rp
+                <span
+                  class="text-gray-800 font-semibold text-4xl tracking-tighter"
+                  >150.000</span
+                >
+                / month
+              </p>
+              <a
+                href="#"
+                class="w-full block text-center bg-gray-50 border border-indigo-500 text-indigo-500 hover:bg-indigo-500 hover:text-gray-50 px-4 py-2 rounded-md font-semibold"
+              >
+                Book a Call
+              </a>
+            </div>
+            <ul class="text-gray-600">
+              <li class="flex gap-2.5">
+                <img src="./assets/check.svg" alt="" />Record daily sales
+              </li>
+              <li class="flex gap-2.5">
+                <img src="./assets/check.svg" alt="" />Export basic reports
+                (PDF/Excel)
+              </li>
+              <li class="flex gap-2.5">
+                <img src="./assets/check.svg" alt="" />1 user access
+              </li>
+              <li class="flex gap-2.5">
+                <img src="./assets/check.svg" alt="" />Email support
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Standard -->
+        <div class="bg-indigo-50 rounded-xl p-0.5">
+          <div class="text-center label px-4 py-2 text-indigo-600">
+            Best for growing businesses
+          </div>
+          <div class="content px-4 py-5 bg-gray-50 gap-10 grid">
+            <div class="heading">
+              <p class="font-semibold tracking-tighter text-2xl">Standard</p>
+              <p class="text-gray-500">
+                Everything you need to track targets, compare results, and
+                manage your team.
+              </p>
+            </div>
+            <div class="price p-3 gap-4 grid border rounded-md border-gray-100">
+              <p class="text-gray-500">
+                Rp
+                <span
+                  class="text-gray-800 font-semibold text-4xl tracking-tighter"
+                  >300.000</span
+                >
+                / month
+              </p>
+              <a
+                href="#"
+                class="w-full block text-center bg-indigo-500 border border-indigo-500 text-gray-50 hover:bg-indigo-600 hover:text-gray-50 px-4 py-2 rounded-md font-semibold"
+              >
+                Book a Call
+              </a>
+            </div>
+            <ul class="text-gray-600">
+              <li class="flex gap-2.5">
+                <img src="./assets/check.svg" alt="" />Everything in Starter
+              </li>
+              <li class="flex gap-2.5">
+                <img src="./assets/check.svg" alt="" />Multi-user access (up to
+                5 users)
+              </li>
+              <li class="flex gap-2.5">
+                <img src="./assets/check.svg" alt="" />Sales targets &
+                comparisons
+              </li>
+              <li class="flex gap-2.5">
+                <img src="./assets/check.svg" alt="" />Automated report
+                notifications
+              </li>
+              <li class="flex gap-2.5">
+                <img src="./assets/check.svg" alt="" />WhatsApp support
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Premium -->
+        <div class="bg-gray-100 rounded-xl p-0.5">
+          <div class="text-center label px-4 py-2 text-gray-500">
+            Ideal for large teams and enterprises
+          </div>
+          <div class="content px-4 py-5 bg-gray-50 gap-10 grid">
+            <div class="heading">
+              <p class="font-semibold tracking-tighter text-2xl">Premium</p>
+              <p class="text-gray-500">
+                Advanced tools with unlimited flexibility, full customization,
+                and priority support.
+              </p>
+            </div>
+            <div class="price p-3 gap-4 grid border rounded-md border-gray-100">
+              <p class="text-gray-500">
+                Rp
+                <span
+                  class="text-gray-800 font-semibold text-4xl tracking-tighter"
+                  >600.000</span
+                >
+                / month
+              </p>
+              <a
+                href="#"
+                class="w-full block text-center bg-gray-50 border border-indigo-500 text-indigo-500 hover:bg-indigo-500 hover:text-gray-50 px-4 py-2 rounded-md font-semibold"
+              >
+                Book a Call
+              </a>
+            </div>
+            <ul class="text-gray-600">
+              <li class="flex gap-2.5">
+                <img src="./assets/check.svg" alt="" />Everything in Standard
+              </li>
+              <li class="flex gap-2.5">
+                <img src="./assets/check.svg" alt="" />Unlimited users
+              </li>
+              <li class="flex gap-2.5">
+                <img src="./assets/check.svg" alt="" />API integration
+              </li>
+              <li class="flex gap-2.5">
+                <img src="./assets/check.svg" alt="" />Custom reports &
+                dashboards
+              </li>
+              <li class="flex gap-2.5">
+                <img src="./assets/check.svg" alt="" />24/7 priority support
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="px-4 sm:px-6 py-20 bg-gray-50">
+      <div class="max-w-5xl mx-auto text-center space-y-6">
+        <span
+          class="w-fit mx-auto flex bg-indigo-50 gap-1 text-indigo-600 px-3 py-1 rounded-md font-medium"
+        >
+          <img src="./assets/faq.svg" alt="" srcset="" />
+          FAQ
+        </span>
+        <h2
+          class="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tighter"
+        >
+          Frequently Asked Questions
+        </h2>
+        <p class="text-gray-600">
+          Quick answers to help you get started and make the most of our
+          platform.
+        </p>
+      </div>
+
+      <!-- FAQ Grid -->
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 max-w-5xl mx-auto">
+        <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
+          <div
+            class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header"
+          >
+            <div class="heading text-xl tracking-tight font-semibold w-full">
+              How does the AI analysis work?
+            </div>
+            <img
+              src="assets/arrow-down.svg"
+              alt=""
+              class="arrow transition-transform duration-300"
+            />
+          </div>
+          <p class="answer p-3 text-sm text-gray-600 hidden">
+            Our AI automatically processes the sales and profit data you input,
+            then gives you clear insights like trends, comparisons, and
+            summaries.
+          </p>
+        </div>
+        <div class="bg-gray-100 border border-gray-100 rounded-xl">
+          <div
+            class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header"
+          >
+            <div class="heading text-xl tracking-tight font-semibold w-full">
+              Can I export my reports?
+            </div>
+            <img
+              src="assets/arrow-down.svg"
+              alt=""
+              class="arrow transition-transform duration-300"
+            />
+          </div>
+          <p class="answer p-3 text-sm text-gray-600 hidden">
+            Yes, all your data can be exported to PDF with one click, making it
+            easy to share with your team or management.
+          </p>
+        </div>
+        <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
+          <div
+            class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header"
+          >
+            <div class="heading text-xl tracking-tight font-semibold w-full">
+              How many users can access the platform?
+            </div>
+            <img
+              src="assets/arrow-down.svg"
+              alt=""
+              class="arrow transition-transform duration-300"
+            />
+          </div>
+          <p class="answer p-3 text-sm text-gray-600 hidden">
+            Starter includes 1 user, Standard supports up to 5 users, and
+            Premium offers unlimited users.
+          </p>
+        </div>
+        <div class="bg-gray-100 border border-gray-100 rounded-xl">
+          <div
+            class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header"
+          >
+            <div class="heading text-xl tracking-tight font-semibold w-full">
+              Do I need to manually calculate profit and loss?
+            </div>
+            <img
+              src="assets/arrow-down.svg"
+              alt=""
+              class="arrow transition-transform duration-300"
+            />
+          </div>
+          <p class="answer p-3 text-sm text-gray-600 hidden">
+            No. Once you input your numbers, the system automatically calculates
+            profit, loss, and targets for you.
+          </p>
+        </div>
+        <div class="bg-gray-100 border border-gray-100 rounded-xl h-fit">
+          <div
+            class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header"
+          >
+            <div class="heading text-xl tracking-tight font-semibold w-full">
+              Is my data safe?
+            </div>
+            <img
+              src="assets/arrow-down.svg"
+              alt=""
+              class="arrow transition-transform duration-300"
+            />
+          </div>
+          <p class="answer p-3 text-sm text-gray-600 hidden">
+            Yes, all your uploaded data is stored securely and only accessible
+            to you and your authorized team members.
+          </p>
+        </div>
+        <div class="bg-gray-100 border border-gray-100 rounded-xl">
+          <div
+            class="flex p-3 bg-gray-50 rounded-xl cursor-pointer justify-between items-center accordion-header"
+          >
+            <div class="heading text-xl tracking-tight font-semibold w-full">
+              Can I change my plan later?
+            </div>
+            <img
+              src="assets/arrow-down.svg"
+              alt=""
+              class="arrow transition-transform duration-300"
+            />
+          </div>
+          <p class="answer p-3 text-sm text-gray-600 hidden">
+            Of course! You can upgrade or downgrade your subscription anytime
+            directly from your account settings.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      id="contact"
+      class="bg-indigo-500 bg-[url(/assets/footer.png)] bg-center bg-no-repeat text-white py-10"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6"
+      >
+        <!-- Logo & Contact -->
+        <div class="space-y-2 text-center md:text-left">
+          <p class="text-4xl font-bold">LOGO</p>
+          <p class="text-4xl tracking-tighter font-light">
+            contact@finalytics.id
+          </p>
+          <p class="mt-10 text-gray-200">
+            © 2025 <a href="#" class="underline">finalytics.id</a> All Rights
+            Reserved
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+
+      menuBtn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    </script>
+    <script>
+      const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+      accordionHeaders.forEach((header) => {
+        header.addEventListener("click", () => {
+          const answer = header.nextElementSibling;
+          const arrow = header.querySelector(".arrow");
+
+          // Toggle hidden class
+          answer.classList.toggle("hidden");
+
+          // Rotate arrow
+          arrow.classList.toggle("rotate-180");
+        });
+      });
+    </script>
+    <script>
+      // Selectors
+      const items = document.querySelectorAll(".feature-item");
+      const img = document.getElementById("featureImage");
+
+      // Helper to activate an item
+      function activate(item) {
+        // deactivate others
+        items.forEach((i) => {
+          i.classList.remove("bg-gray-100");
+          i.setAttribute("aria-selected", "false");
+          const d = i.querySelector(".desc");
+          if (d) d.classList.add("hidden");
+          const t = i.querySelector(".title");
+          if (t)
+            t.classList.remove("font-semibold", "text-gray-800"),
+              t.classList.add("text-gray-400");
+          const ic = i.querySelector(".icon");
+          if (ic)
+            ic.classList.remove("bg-gray-800"), ic.classList.add("bg-gray-400");
+        });
+
+        // activate clicked
+        item.classList.add("bg-gray-100");
+        item.setAttribute("aria-selected", "true");
+        const desc = item.querySelector(".desc");
+        if (desc) desc.classList.remove("hidden");
+        const title = item.querySelector(".title");
+        if (title)
+          title.classList.add("font-semibold", "text-gray-800"),
+            title.classList.remove("text-gray-400");
+        const icon = item.querySelector(".icon");
+        if (icon)
+          icon.classList.add("bg-gray-800"),
+            icon.classList.remove("bg-gray-400");
+
+        // swap image with a small fade
+        const newSrc = item.dataset.image;
+        if (!newSrc) return;
+        img.classList.add("opacity-0");
+        // small delay to let fade-out run (150ms)
+        setTimeout(() => {
+          img.src = newSrc;
+          img.classList.remove("opacity-0");
+        }, 150);
+      }
+
+      // Click & keyboard handlers
+      items.forEach((item) => {
+        item.addEventListener("click", () => activate(item));
+        item.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            activate(item);
+          }
+        });
+      });
+
+      // ensure first item is active on load (if not already)
+      const initiallyActive =
+        document.querySelector('.feature-item[aria-selected="true"]') ||
+        items[0];
+      if (initiallyActive) activate(initiallyActive);
+    </script>
+  </body>
+</html>
