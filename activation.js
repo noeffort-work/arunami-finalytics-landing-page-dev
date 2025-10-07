@@ -372,44 +372,15 @@ function renderTimeline(status) {
 }
 
 function renderMetadata() {
-  const pairs = [];
-
-  if (state.email) {
-    pairs.push(['Email', state.email]);
-  }
-
-  if (state.activationCode) {
-    pairs.push(['Activation code', state.activationCode]);
-  }
-
-  if (state.retryCount != null && state.retryCount > 0) {
-    pairs.push(['Retry count', String(state.retryCount)]);
-  }
-
-  if (state.activationExpiresAt) {
-    const formatted = formatTimestamp(state.activationExpiresAt);
-    if (formatted) pairs.push(['Activation expires', formatted]);
-  }
-
-  if (state.updatedAt) {
-    const formatted = formatTimestamp(state.updatedAt);
-    if (formatted) pairs.push(['Last updated', formatted]);
-  }
-
   const metadata = state.metadata || {};
-  const metadataPairs = [
+  const pairs = [
+    ['Name', metadata.customerName],
+    ['Email', state.email],
     ['Plan', metadata.planType],
-    ['Transaction ID', metadata.transactionId],
-    ['Membership expires', formatTimestamp(metadata.membershipExpiresAt)],
-    ['Product ID', metadata.productId],
-    ['Customer ID', metadata.customerId],
-    ['Customer name', metadata.customerName],
-    ['Customer email', metadata.customerEmail],
-    ['Membership tier ID', metadata.membershipTierId],
-    ['Membership tier', metadata.membershipTierName],
+    ['Expires', formatTimestamp(metadata.membershipExpiresAt)],
+    ['Activation code', state.activationCode],
+    ['Last synced', formatTimestamp(state.updatedAt)],
   ].filter(([, value]) => Boolean(value));
-
-  pairs.push(...metadataPairs);
 
   dom.metadataList.innerHTML = pairs
     .map(
@@ -423,8 +394,6 @@ function renderMetadata() {
     .join('');
 
   if (pairs.length > 0 && state.status === 'success') {
-    dom.metadata.classList.remove('hidden');
-  } else if (metadataPairs.length > 0) {
     dom.metadata.classList.remove('hidden');
   } else {
     dom.metadata.classList.add('hidden');
