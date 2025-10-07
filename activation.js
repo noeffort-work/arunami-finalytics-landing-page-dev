@@ -94,11 +94,31 @@ const TIMELINE_ORDER = [
   'success',
 ];
 
+function getActivationPrefillFromQuery() {
+  if (typeof window === 'undefined') return {};
+  const params = new URLSearchParams(window.location.search);
+  const email = params.get('email');
+  const licenseCode =
+    params.get('licenseCode') ||
+    params.get('activationCode') ||
+    params.get('code');
+
+  const normalizedEmail = email ? email.trim().toLowerCase() : '';
+  const normalizedCode = licenseCode ? licenseCode.trim().toUpperCase() : '';
+
+  const result = {};
+  if (normalizedEmail) result.email = normalizedEmail;
+  if (normalizedCode) result.activationCode = normalizedCode;
+  return result;
+}
+
+const queryPrefill = getActivationPrefillFromQuery();
+
 const state = {
   ready: false,
   id: null,
-  email: '',
-  activationCode: '',
+  email: queryPrefill.email || '',
+  activationCode: queryPrefill.activationCode || '',
   status: 'idle',
   retryCount: 0,
   metadata: null,
@@ -134,6 +154,14 @@ const dom = {
     document.querySelectorAll('[data-toggle-password]')
   ),
 };
+
+if (queryPrefill.email && dom.activationEmail) {
+  dom.activationEmail.value = queryPrefill.email;
+}
+
+if (queryPrefill.activationCode && dom.activationCode) {
+  dom.activationCode.value = queryPrefill.activationCode;
+}
 
 const toneToClasses = {
   neutral: {
