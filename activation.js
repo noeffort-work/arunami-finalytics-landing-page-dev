@@ -403,6 +403,17 @@ function renderMetadata() {
   }
 }
 
+/**
+ * Hide or shows HTML element
+ *
+ * @param {HTMLElement} element HTML element to be hidden or unhide
+ * @param {boolean} isHidden Set to hide or show
+ */
+function setElementHidden(element, isHidden) {
+  if (isHidden) element.setAttribute('hidden', 'true');
+  else element.removeAttribute('hidden');
+}
+
 function syncPasswordToggles() {
   dom.passwordToggles.forEach((button) => {
     const targetId = button.dataset.togglePassword;
@@ -413,18 +424,18 @@ function syncPasswordToggles() {
 
     const showLabel = button.dataset.labelShow || 'Show password';
     const hideLabel = button.dataset.labelHide || 'Hide password';
-    const isPasswordHidden = input.type === 'password';
+    const isPassword = input.type === 'password';
 
     const showIcon = button.querySelector('[data-toggle-password-icon="show"]');
     const hideIcon = button.querySelector('[data-toggle-password-icon="hide"]');
 
     if (showIcon && hideIcon) {
-      showIcon.classList.toggle('hidden', isPasswordHidden);
-      hideIcon.classList.toggle('hidden', !isPasswordHidden);
+      setElementHidden(showIcon, !isPassword);
+      setElementHidden(hideIcon, isPassword);
     }
 
-    button.setAttribute('aria-label', isPasswordHidden ? showLabel : hideLabel);
-    button.setAttribute('aria-pressed', String(!isPasswordHidden));
+    button.setAttribute('aria-label', isPassword ? showLabel : hideLabel);
+    button.setAttribute('aria-pressed', String(!isPassword));
     button.disabled = state.passwordSubmitting || input.disabled;
   });
 }
