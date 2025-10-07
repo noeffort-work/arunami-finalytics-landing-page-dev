@@ -1,85 +1,185 @@
+// --- TRANSLATIONS OBJECT ---
+const translations = {
+  nav_dashboard: { en: "Go to Dashboard", id: "Ke Dashboard" },
+  activation_badge: { en: "Membership Activation", id: "Aktivasi Keanggotaan" },
+  activation_title: { en: "Activate your Finalytics access in minutes", id: "Aktifkan akses Finalytics Anda dalam hitungan menit" },
+  activation_subtitle: { en: "Enter the activation code that you received after completing your Mayar payment. We'll validate it, help you create an account if needed, and attach the right plan automatically.", id: "Masukkan kode aktivasi yang Anda terima setelah menyelesaikan pembayaran Mayar. Kami akan memvalidasinya, membantu Anda membuat akun jika diperlukan, dan melampirkan paket yang tepat secara otomatis." },
+  step1_title: { en: "Validate your purchase", id: "Validasi pembelian Anda" },
+  step1_desc: { en: "We confirm the activation code against Mayar and prepare the membership details.", id: "Kami mengonfirmasi kode aktivasi dengan Mayar dan menyiapkan detail keanggotaan." },
+  step2_title: { en: "Create or connect an account", id: "Buat atau hubungkan akun" },
+  step2_desc: { en: "New to Finalytics? Set a secure password. Existing accounts go straight to plan assignment.", id: "Baru di Finalytics? Buat kata sandi yang aman. Akun yang sudah ada langsung ke penugasan paket." },
+  step3_title: { en: "Activate your membership", id: "Aktifkan keanggotaan Anda" },
+  step3_desc: { en: "We attach the purchased plan to your account, ready for you to sign in and start exploring insights.", id: "Kami melampirkan paket yang dibeli ke akun Anda, siap untuk Anda masuk dan mulai menjelajahi wawasan." },
+  form_email_label: { en: "Email address", id: "Alamat email" },
+  form_email_placeholder: { en: "you@example.com", id: "anda@contoh.com" },
+  form_code_label: { en: "Activation code", id: "Kode aktivasi" },
+  form_code_placeholder: { en: "ABC123", id: "ABC123" },
+  form_code_hint: { en: "Use the code from Mayar. It is case insensitive and typically 6–10 characters.", id: "Gunakan kode dari Mayar. Tidak peka huruf besar-kecil dan biasanya 6–10 karakter." },
+  form_submit_btn: { en: "Start activation", id: "Mulai aktivasi" },
+  form_password_label: { en: "Create a password", id: "Buat kata sandi" },
+  form_password_placeholder: { en: "Use at least 8 characters", id: "Gunakan minimal 8 karakter" },
+  form_password_hint: { en: "Minimum 8 characters. Include a mix of upper & lower case letters, numbers, and symbols.", id: "Minimal 8 karakter. Sertakan campuran huruf besar & kecil, angka, dan simbol." },
+  form_password_show: { en: "Show password", id: "Tampilkan kata sandi" },
+  form_password_hide: { en: "Hide password", id: "Sembunyikan kata sandi" },
+  form_password_confirm_label: { en: "Confirm password", id: "Konfirmasi kata sandi" },
+  form_password_confirm_placeholder: { en: "Re-enter the password", id: "Masukkan ulang kata sandi" },
+  form_password_confirm_show: { en: "Show password confirmation", id: "Tampilkan konfirmasi kata sandi" },
+  form_password_confirm_hide: { en: "Hide password confirmation", id: "Sembunyikan konfirmasi kata sandi" },
+  form_password_submit_btn: { en: "Save password & continue", id: "Simpan kata sandi & lanjutkan" },
+  progress_label: { en: "Status", id: "Status" },
+  timeline_waiting_validation_title: { en: "Waiting for validation", id: "Menunggu validasi" },
+  timeline_waiting_validation_desc: { en: "Activation document queued for backend verification.", id: "Dokumen aktivasi antre untuk verifikasi backend." },
+  timeline_validating_code_title: { en: "Validating code", id: "Memvalidasi kode" },
+  timeline_validating_code_desc: { en: "Mayar gateway verification in progress.", id: "Verifikasi gateway Mayar sedang berlangsung." },
+  timeline_waiting_password_title: { en: "Password required", id: "Kata sandi diperlukan" },
+  timeline_waiting_password_desc: { en: "New user detected. Awaiting secure password creation.", id: "Pengguna baru terdeteksi. Menunggu pembuatan kata sandi yang aman." },
+  timeline_creating_account_title: { en: "Creating account", id: "Membuat akun" },
+  timeline_creating_account_desc: { en: "Account creation and claim assignment in progress.", id: "Pembuatan akun dan penugasan klaim sedang berlangsung." },
+  timeline_assigning_plan_title: { en: "Assigning plan", id: "Menetapkan paket" },
+  timeline_assigning_plan_desc: { en: "Membership data and billing metadata being attached.", id: "Data keanggotaan dan metadata penagihan sedang dilampirkan." },
+  timeline_success_title: { en: "Activation complete", id: "Aktivasi selesai" },
+  timeline_success_desc: { en: "Your Finalytics membership is ready to use.", id: "Keanggotaan Finalytics Anda siap digunakan." },
+  metadata_title: { en: "Membership detail", id: "Detail keanggotaan" },
+  metadata_synced: { en: "Synced", id: "Tersinkronisasi" },
+  metadata_name: { en: "Name", id: "Nama" },
+  metadata_email: { en: "Email", id: "Email" },
+  metadata_plan: { en: "Plan", id: "Paket" },
+  metadata_expires: { en: "Expires", id: "Kedaluwarsa" },
+  metadata_activation_code: { en: "Activation code", id: "Kode aktivasi" },
+  metadata_last_synced: { en: "Last synced", id: "Terakhir disinkronkan" },
+  footer_help_text: { en: "Need help? Reach us at", id: "Butuh bantuan? Hubungi kami di" },
+  footer_copyright: { en: "Finalytics. All rights reserved.", id: "Finalytics. Hak Cipta Dilindungi." },
+  footer_home: { en: "Home", id: "Beranda" },
+  footer_signin: { en: "Sign in", id: "Masuk" },
+  // Status messages
+  status_idle_title: { en: "Provide your activation details", id: "Berikan detail aktivasi Anda" },
+  status_idle_subtitle: { en: "We'll guide you through verification, account setup, and plan assignment.", id: "Kami akan memandu Anda melalui verifikasi, pengaturan akun, dan penugasan paket." },
+  status_idle_pill: { en: "Waiting for input", id: "Menunggu input" },
+  status_waiting_validation_title: { en: "Activation queued for verification", id: "Aktivasi diantrikan untuk verifikasi" },
+  status_waiting_validation_subtitle: { en: "We stored your activation request and are waiting for the backend to pick it up.", id: "Kami menyimpan permintaan aktivasi Anda dan menunggu backend untuk mengambilnya." },
+  status_waiting_validation_pill: { en: "Waiting for validation", id: "Menunggu validasi" },
+  status_validating_code_title: { en: "Validating activation code with Mayar", id: "Memvalidasi kode aktivasi dengan Mayar" },
+  status_validating_code_subtitle: { en: "Hang tight while we confirm your purchase details and entitlement.", id: "Tunggu sebentar saat kami mengonfirmasi detail pembelian dan hak Anda." },
+  status_validating_code_pill: { en: "Validating with Mayar", id: "Memvalidasi dengan Mayar" },
+  status_waiting_password_title: { en: "Create a password to continue", id: "Buat kata sandi untuk melanjutkan" },
+  status_waiting_password_subtitle: { en: "We could not find an existing Finalytics account with this email.", id: "Kami tidak dapat menemukan akun Finalytics yang ada dengan email ini." },
+  status_waiting_password_pill: { en: "Password required", id: "Kata sandi diperlukan" },
+  status_waiting_create_account_title: { en: "Creating your Finalytics account", id: "Membuat akun Finalytics Anda" },
+  status_waiting_create_account_subtitle: { en: "Your password was received. We are creating the user profile now.", id: "Kata sandi Anda telah diterima. Kami sedang membuat profil pengguna sekarang." },
+  status_waiting_create_account_pill: { en: "Creating account", id: "Membuat akun" },
+  status_creating_account_title: { en: "Creating your Finalytics account", id: "Membuat akun Finalytics Anda" },
+  status_creating_account_subtitle: { en: "Finalising Firebase Auth user and security configuration.", id: "Menyelesaikan pengguna Firebase Auth dan konfigurasi keamanan." },
+  status_creating_account_pill: { en: "Creating account", id: "Membuat akun" },
+  status_assigning_plan_title: { en: "Assigning your membership plan", id: "Menetapkan paket keanggotaan Anda" },
+  status_assigning_plan_subtitle: { en: "We are attaching the purchased plan and membership metadata.", id: "Kami sedang melampirkan paket yang dibeli dan metadata keanggotaan." },
+  status_assigning_plan_pill: { en: "Assigning plan", id: "Menetapkan paket" },
+  status_success_title: { en: "Activation successful", id: "Aktivasi berhasil" },
+  status_success_subtitle: { en: "You can now sign in on app.finalytics.id using your registered email.", id: "Anda sekarang dapat masuk di app.finalytics.id menggunakan email terdaftar Anda." },
+  status_success_pill: { en: "Activation complete", id: "Aktivasi selesai" },
+  status_invalid_code_title: { en: "Activation code not recognised", id: "Kode aktivasi tidak dikenali" },
+  status_invalid_code_subtitle: { en: "Please verify the code from Mayar. You can try again if you still have attempts left.", id: "Harap verifikasi kode dari Mayar. Anda dapat mencoba lagi jika masih memiliki percobaan tersisa." },
+  status_invalid_code_pill: { en: "Invalid code", id: "Kode tidak valid" },
+  status_failed_title: { en: "Activation failed", id: "Aktivasi gagal" },
+  status_failed_subtitle: { en: "An unrecoverable error occurred. Please reach out to support for assistance.", id: "Terjadi kesalahan yang tidak dapat dipulihkan. Silakan hubungi dukungan untuk bantuan." },
+  status_failed_pill: { en: "Activation failed", id: "Aktivasi gagal" },
+  // Button states
+  btn_start_activation: { en: "Start activation", id: "Mulai aktivasi" },
+  btn_processing: { en: "Processing…", id: "Memproses…" },
+  btn_updating: { en: "Updating…", id: "Memperbarui…" },
+  btn_save_password: { en: "Save password & continue", id: "Simpan kata sandi & lanjutkan" },
+  btn_saving: { en: "Saving…", id: "Menyimpan…" },
+  // Error messages
+  error_invalid_email: { en: "Please provide a valid email address.", id: "Harap berikan alamat email yang valid." },
+  error_invalid_code: { en: "Activation code should be at least 6 characters and contain only letters, numbers, or dashes.", id: "Kode aktivasi harus minimal 6 karakter dan hanya berisi huruf, angka, atau tanda hubung." },
+  error_password_mismatch: { en: "Passwords do not match.", id: "Kata sandi tidak cocok." },
+  error_password_weak: { en: "Password must be at least 8 characters and include upper, lower, number, and symbol characters.", id: "Kata sandi harus minimal 8 karakter dan menyertakan karakter huruf besar, kecil, angka, dan simbol." },
+  error_activation_failed: { en: "Failed to submit activation. Please try again or contact support.", id: "Gagal mengirim aktivasi. Silakan coba lagi atau hubungi dukungan." },
+  error_password_failed: { en: "Failed to submit password. Please try again or contact support.", id: "Gagal mengirim kata sandi. Silakan coba lagi atau hubungi dukungan." },
+  error_attempts_left: { en: "We could not validate that activation code. You can try again. Attempts remaining:", id: "Kami tidak dapat memvalidasi kode aktivasi tersebut. Anda dapat mencoba lagi. Percobaan tersisa:" },
+  error_attempts_exhausted: { en: "We could not validate that activation code. Attempts exhausted.", id: "Kami tidak dapat memvalidasi kode aktivasi tersebut. Percobaan habis." },
+  error_activation_failed_contact: { en: "Activation failed due to an unrecoverable error. Please contact support@finalytics.id.", id: "Aktivasi gagal karena kesalahan yang tidak dapat dipulihkan. Silakan hubungi support@finalytics.id." },
+};
+
+let currentLang = localStorage.getItem('language') || 'id';
+
 const STATUS_COPY = {
   idle: {
-    title: 'Provide your activation details',
-    subtitle:
-      "We'll guide you through verification, account setup, and plan assignment.",
-    pill: 'Waiting for input',
+    title: 'status_idle_title',
+    subtitle: 'status_idle_subtitle',
+    pill: 'status_idle_pill',
     tone: 'neutral',
     icon: 'idle',
   },
   waiting_validation: {
-    title: 'Activation queued for verification',
-    subtitle:
-      'We stored your activation request and are waiting for the backend to pick it up.',
-    pill: 'Waiting for validation',
+    title: 'status_waiting_validation_title',
+    subtitle: 'status_waiting_validation_subtitle',
+    pill: 'status_waiting_validation_pill',
     tone: 'progress',
     icon: 'progress',
   },
   validating_code: {
-    title: 'Validating activation code with Mayar',
-    subtitle:
-      'Hang tight while we confirm your purchase details and entitlement.',
-    pill: 'Validating with Mayar',
+    title: 'status_validating_code_title',
+    subtitle: 'status_validating_code_subtitle',
+    pill: 'status_validating_code_pill',
     tone: 'progress',
     icon: 'progress',
   },
   waiting_password: {
-    title: 'Create a password to continue',
-    subtitle:
-      'We could not find an existing Finalytics account with this email.',
-    pill: 'Password required',
+    title: 'status_waiting_password_title',
+    subtitle: 'status_waiting_password_subtitle',
+    pill: 'status_waiting_password_pill',
     tone: 'warning',
     icon: 'password',
   },
   waiting_create_account: {
-    title: 'Creating your Finalytics account',
-    subtitle:
-      'Your password was received. We are creating the user profile now.',
-    pill: 'Creating account',
+    title: 'status_waiting_create_account_title',
+    subtitle: 'status_waiting_create_account_subtitle',
+    pill: 'status_waiting_create_account_pill',
     tone: 'progress',
     icon: 'progress',
   },
   creating_account: {
-    title: 'Creating your Finalytics account',
-    subtitle:
-      'Finalising Firebase Auth user and security configuration.',
-    pill: 'Creating account',
+    title: 'status_creating_account_title',
+    subtitle: 'status_creating_account_subtitle',
+    pill: 'status_creating_account_pill',
     tone: 'progress',
     icon: 'progress',
   },
   assigning_plan: {
-    title: 'Assigning your membership plan',
-    subtitle:
-      'We are attaching the purchased plan and membership metadata.',
-    pill: 'Assigning plan',
+    title: 'status_assigning_plan_title',
+    subtitle: 'status_assigning_plan_subtitle',
+    pill: 'status_assigning_plan_pill',
     tone: 'progress',
     icon: 'progress',
   },
   success: {
-    title: 'Activation successful',
-    subtitle:
-      'You can now sign in on app.finalytics.id using your registered email.',
-    pill: 'Activation complete',
+    title: 'status_success_title',
+    subtitle: 'status_success_subtitle',
+    pill: 'status_success_pill',
     tone: 'success',
     icon: 'success',
   },
   invalid_code: {
-    title: 'Activation code not recognised',
-    subtitle:
-      'Please verify the code from Mayar. You can try again if you still have attempts left.',
-    pill: 'Invalid code',
+    title: 'status_invalid_code_title',
+    subtitle: 'status_invalid_code_subtitle',
+    pill: 'status_invalid_code_pill',
     tone: 'error',
     icon: 'error',
   },
   failed: {
-    title: 'Activation failed',
-    subtitle:
-      'An unrecoverable error occurred. Please reach out to support for assistance.',
-    pill: 'Activation failed',
+    title: 'status_failed_title',
+    subtitle: 'status_failed_subtitle',
+    pill: 'status_failed_pill',
     tone: 'error',
     icon: 'error',
   },
 };
+
+function t(key) {
+  return translations[key] && translations[key][currentLang] !== undefined
+    ? translations[key][currentLang]
+    : key;
+}
 
 const STATUS_ALIASES = {
   creating_account: 'waiting_create_account',
@@ -254,15 +354,15 @@ function render() {
   const copy = STATUS_COPY[currentStatus] || STATUS_COPY.idle;
   const tone = toneToClasses[copy.tone] || toneToClasses.neutral;
 
-  dom.statusTitle.textContent = copy.title;
-  dom.statusSubtitle.textContent = copy.subtitle;
+  dom.statusTitle.textContent = t(copy.title);
+  dom.statusSubtitle.textContent = t(copy.subtitle);
   dom.statusPill.className = tone.pill;
-  dom.statusPill.textContent = copy.pill;
+  dom.statusPill.textContent = t(copy.pill);
   dom.statusIcon.className = tone.icon;
   dom.statusIcon.innerHTML = ICONS[copy.icon] || ICONS.idle;
 
   dom.statusBadge.className = tone.badge;
-  dom.statusBadge.textContent = copy.pill;
+  dom.statusBadge.textContent = t(copy.pill);
 
   dom.activationEmail.value = state.email || '';
   dom.activationCode.value = state.activationCode || '';
@@ -283,8 +383,8 @@ function render() {
   setButtonLoading(
     dom.activationSubmit,
     state.activationSubmitting,
-    'Start activation',
-    state.id ? 'Updating…' : 'Processing…'
+    t('btn_start_activation'),
+    state.id ? t('btn_updating') : t('btn_processing')
   );
   dom.activationSubmit.disabled = activationButtonDisabled;
 
@@ -295,8 +395,8 @@ function render() {
   setButtonLoading(
     dom.passwordSubmit,
     state.passwordSubmitting,
-    'Save password & continue',
-    'Saving…'
+    t('btn_save_password'),
+    t('btn_saving')
   );
 
   renderAlert();
@@ -315,11 +415,10 @@ function renderAlert() {
     const attemptsLeft = Math.max(0, 3 - (state.retryCount || 0));
     message =
       attemptsLeft > 0
-        ? `We could not validate that activation code. You can try again. Attempts remaining: ${attemptsLeft}.`
-        : 'We could not validate that activation code. Attempts exhausted.';
+        ? `${t('error_attempts_left')} ${attemptsLeft}.`
+        : t('error_attempts_exhausted');
   } else if (currentStatus === 'failed') {
-    message =
-      'Activation failed due to an unrecoverable error. Please contact support@finalytics.id.';
+    message = t('error_activation_failed_contact');
   }
 
   if (message) {
@@ -374,12 +473,12 @@ function renderTimeline(status) {
 function renderMetadata() {
   const metadata = state.metadata || {};
   const pairs = [
-    ['Name', metadata.customerName],
-    ['Email', state.email],
-    ['Plan', metadata.planType],
-    ['Expires', formatTimestamp(metadata.membershipExpiresAt)],
-    ['Activation code', state.activationCode],
-    ['Last synced', formatTimestamp(state.updatedAt)],
+    [t('metadata_name'), metadata.customerName],
+    [t('metadata_email'), state.email],
+    [t('metadata_plan'), metadata.planType],
+    [t('metadata_expires'), formatTimestamp(metadata.membershipExpiresAt)],
+    [t('metadata_activation_code'), state.activationCode],
+    [t('metadata_last_synced'), formatTimestamp(state.updatedAt)],
   ].filter(([, value]) => Boolean(value));
 
   dom.metadataList.innerHTML = pairs
@@ -419,8 +518,10 @@ function syncPasswordToggles() {
     const input = document.getElementById(targetId);
     if (!input) return;
 
-    const showLabel = button.dataset.labelShow || 'Show password';
-    const hideLabel = button.dataset.labelHide || 'Hide password';
+    const showLabelKey = button.dataset.labelShowKey;
+    const hideLabelKey = button.dataset.labelHideKey;
+    const showLabel = showLabelKey ? t(showLabelKey) : 'Show password';
+    const hideLabel = hideLabelKey ? t(hideLabelKey) : 'Hide password';
     const isPassword = input.type === 'password';
 
     const showIcon = button.querySelector('[data-toggle-password-icon="show"]');
@@ -571,15 +672,14 @@ dom.activationForm.addEventListener('submit', async (event) => {
 
   if (!validateEmail(email)) {
     setState({
-      error: 'Please provide a valid email address.',
+      error: t('error_invalid_email'),
     });
     return;
   }
 
   if (!validateActivationCode(activationCode)) {
     setState({
-      error:
-        'Activation code should be at least 6 characters and contain only letters, numbers, or dashes.',
+      error: t('error_invalid_code'),
     });
     return;
   }
@@ -610,7 +710,7 @@ dom.activationForm.addEventListener('submit', async (event) => {
     setState({
       error:
         error?.message ||
-        'Failed to submit activation. Please try again or contact support.',
+        t('error_activation_failed'),
     });
   } finally {
     setState({ activationSubmitting: false });
@@ -625,14 +725,13 @@ dom.passwordForm.addEventListener('submit', async (event) => {
   const passwordConfirm = dom.passwordConfirmInput.value;
 
   if (password !== passwordConfirm) {
-    setState({ error: 'Passwords do not match.' });
+    setState({ error: t('error_password_mismatch') });
     return;
   }
 
   if (!validatePassword(password)) {
     setState({
-      error:
-        'Password must be at least 8 characters and include upper, lower, number, and symbol characters.',
+      error: t('error_password_weak'),
     });
     return;
   }
@@ -650,7 +749,7 @@ dom.passwordForm.addEventListener('submit', async (event) => {
     setState({
       error:
         error?.message ||
-        'Failed to submit password. Please try again or contact support.',
+        t('error_password_failed'),
     });
   } finally {
     setState({ passwordSubmitting: false });
@@ -664,6 +763,71 @@ dom.passwordToggles.forEach((button) => {
     syncPasswordToggles();
   });
 });
+
+// --- LANGUAGE SWITCHER ---
+const langSwitcher = document.getElementById('lang-switcher');
+const langBtn = document.getElementById('lang-btn');
+const langMenu = document.getElementById('lang-menu');
+const langText = document.getElementById('lang-text');
+
+if (langBtn && langMenu) {
+  langBtn.addEventListener('click', () => {
+    langMenu.classList.toggle('hidden');
+  });
+
+  document.addEventListener('click', (event) => {
+    if (langSwitcher && !langSwitcher.contains(event.target)) {
+      langMenu.classList.add('hidden');
+    }
+  });
+
+  langMenu.addEventListener('click', (e) => {
+    e.preventDefault();
+    const selectedLang = e.target.getAttribute('data-lang');
+    if (selectedLang) {
+      setLanguage(selectedLang);
+    }
+  });
+}
+
+function setLanguage(lang) {
+  currentLang = lang;
+
+  // Update all elements with data-translate-key
+  document.querySelectorAll('[data-translate-key]').forEach((el) => {
+    const key = el.getAttribute('data-translate-key');
+    if (translations[key] && translations[key][lang] !== undefined) {
+      el.innerHTML = translations[key][lang];
+    }
+  });
+
+  // Update placeholders
+  document.querySelectorAll('[data-translate-placeholder]').forEach((el) => {
+    const key = el.getAttribute('data-translate-placeholder');
+    if (translations[key] && translations[key][lang] !== undefined) {
+      el.placeholder = translations[key][lang];
+    }
+  });
+
+  // Update lang text
+  if (langText) {
+    langText.textContent = lang.toUpperCase();
+  }
+
+  // Save to localStorage
+  localStorage.setItem('language', lang);
+
+  // Hide menu
+  if (langMenu) {
+    langMenu.classList.add('hidden');
+  }
+
+  // Re-render the UI with new language
+  render();
+}
+
+// Initialize language
+setLanguage(currentLang);
 
 class ActivationServiceFactory {
   static async create(config = {}) {
