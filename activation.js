@@ -640,8 +640,7 @@ dom.passwordForm.addEventListener('submit', async (event) => {
   setState({ passwordSubmitting: true, error: null });
 
   try {
-    const hashed = await hashPassword(password);
-    await activationService.submitPassword(state.id, hashed);
+    await activationService.submitPassword(state.id, password);
     dom.passwordInput.value = '';
     dom.passwordConfirmInput.value = '';
     dom.passwordInput.type = 'password';
