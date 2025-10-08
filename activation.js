@@ -14,7 +14,7 @@ const translations = {
   form_email_placeholder: { en: "you@example.com", id: "anda@contoh.com" },
   form_code_label: { en: "Activation code", id: "Kode aktivasi" },
   form_code_placeholder: { en: "ABC123", id: "ABC123" },
-  form_code_hint: { en: "Use the code from Mayar. It is case insensitive and typically 6–10 characters.", id: "Gunakan kode dari Mayar. Tidak peka huruf besar-kecil dan biasanya 6–10 karakter." },
+  form_code_hint: { en: "Use the code from Mayar. Typically 16 characters contains of alphabet and number.", id: "Gunakan kode dari Mayar. Biasanya 16 karakter yang terdiri dari huruf dan angka." },
   form_submit_btn: { en: "Start activation", id: "Mulai aktivasi" },
   form_password_label: { en: "Create a password", id: "Buat kata sandi" },
   form_password_placeholder: { en: "Use at least 8 characters", id: "Gunakan minimal 8 karakter" },
