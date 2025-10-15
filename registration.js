@@ -1,3 +1,10 @@
+// --- LOGGER UTILITY ---
+const logger = {
+  info: (message, ...args) => console.log(`[INFO] ${new Date().toISOString()} - ${message}`, ...args),
+  debug: (message, ...args) => console.debug(`[DEBUG] ${new Date().toISOString()} - ${message}`, ...args),
+  error: (message, ...args) => console.error(`[ERROR] ${new Date().toISOString()} - ${message}`, ...args),
+};
+
 // --- TRANSLATIONS OBJECT ---
 const translations = {
   nav_signin: { en: "Sign In", id: "Masuk" },
@@ -5,15 +12,12 @@ const translations = {
   registration_badge: { en: "Account Registration", id: "Pendaftaran Akun" },
   registration_title: { en: "Create your Finalytics account", id: "Buat akun Finalytics Anda" },
   registration_subtitle: { en: "Join Finalytics today. Fill in your details to get started. If you have a pre-paid activation code, you can enter it now to activate your plan instantly.", id: "Bergabunglah dengan Finalytics hari ini. Isi detail Anda untuk memulai. Jika Anda memiliki kode aktivasi prabayar, Anda dapat memasukkannya sekarang untuk mengaktifkan paket Anda secara instan." },
-  
-  // Statuses
   status_idle_title: { en: "Complete your details", id: "Lengkapi detail Anda" },
   status_idle_subtitle: { en: "All fields are required except for the activation code.", id: "Semua kolom wajib diisi kecuali kode aktivasi." },
   status_success_title: { en: "Registration successful!", id: "Pendaftaran berhasil!" },
   status_success_subtitle: { en: "Welcome to Finalytics. You can now sign in.", id: "Selamat datang di Finalytics. Anda sekarang dapat masuk." },
   status_success_with_code_subtitle: { en: "Your account is created. Now activating your plan...", id: "Akun Anda telah dibuat. Sekarang mengaktifkan paket Anda..." },
-  
-  // Form Labels & Placeholders
+  status_success_with_code_failed_subtitle: { en: "Your account was created, but plan activation failed.", id: "Akun Anda berhasil dibuat, tetapi aktivasi paket gagal." },
   form_name_label: { en: "Full name", id: "Nama lengkap" },
   form_name_placeholder: { en: "e.g. Budi Santoso", id: "contoh: Budi Santoso" },
   form_email_label: { en: "Email address", id: "Alamat email" },
@@ -33,11 +37,7 @@ const translations = {
   form_code_placeholder: { en: "ABC123", id: "ABC123" },
   form_code_hint: { en: "If you have a code from Mayar, enter it here to activate your plan immediately.", id: "Jika Anda memiliki kode dari Mayar, masukkan di sini untuk mengaktifkan paket Anda segera." },
   form_submit_btn: { en: "Create account", id: "Buat akun" },
-  
-  // Button States
   btn_processing: { en: "Creating account…", id: "Membuat akun…" },
-  
-  // Error Messages
   error_invalid_name: { en: "Please enter your full name.", id: "Harap masukkan nama lengkap Anda." },
   error_invalid_email: { en: "Please provide a valid email address.", id: "Harap berikan alamat email yang valid." },
   error_invalid_phone: { en: "Please enter a valid phone number.", id: "Harap masukkan nomor telepon yang valid." },
@@ -46,13 +46,10 @@ const translations = {
   error_registration_failed: { en: "Failed to create account. Please try again or contact support.", id: "Gagal membuat akun. Silakan coba lagi atau hubungi dukungan." },
   error_activation_failed_contact: { en: "Activation failed due to an unrecoverable error. Please contact support@finalytics.id.", id: "Aktivasi gagal karena kesalahan yang tidak dapat dipulihkan. Silakan hubungi support@finalytics.id." },
   error_email_in_use: { en: "This email address is already in use. Please try another.", id: "Alamat email ini sudah digunakan. Silakan coba yang lain." },
-
-  // Footer & Common
+  error_invalid_code_message: { en: "The activation code you entered is not valid. Please check and try again.", id: "Kode aktivasi yang Anda masukkan tidak valid. Silakan periksa dan coba lagi." },
   footer_help_text: { en: "Need help? Reach us at", id: "Butuh bantuan? Hubungi kami di" },
   footer_copyright: { en: "Finalytics. All rights reserved.", id: "Finalytics. Hak Cipta Dilindungi." },
   footer_home: { en: "Home", id: "Beranda" },
-  
-  // Activation Timeline (reused)
   progress_label: { en: "Status", id: "Status" },
   timeline_waiting_validation_title: { en: "Waiting for validation", id: "Menunggu validasi" },
   timeline_waiting_validation_desc: { en: "Activation document queued for backend verification.", id: "Dokumen aktivasi antre untuk verifikasi backend." },
@@ -65,8 +62,6 @@ const translations = {
   activation_status_pill_waiting: { en: "Activating plan...", id: "Mengaktifkan paket..."},
   activation_status_pill_success: { en: "Plan activated", id: "Paket diaktifkan"},
   activation_status_pill_failed: { en: "Activation failed", id: "Aktivasi gagal"},
-  
-  // Metadata translations
   metadata_title: { en: "Membership detail", id: "Detail keanggotaan" },
   metadata_synced: { en: "Synced", id: "Tersinkronisasi" },
   metadata_name: { en: "Name", id: "Nama" },
@@ -86,7 +81,6 @@ function t(key) {
     : key;
 }
 
-// --- STATE MANAGEMENT ---
 const state = {
   ready: false,
   isSubmitting: false,
@@ -105,7 +99,6 @@ let registrationService = null;
 let activationService = null;
 let unsubscribeCurrent = null;
 
-// --- DOM ELEMENTS ---
 const dom = {
   form: document.getElementById('registration-form'),
   fullName: document.getElementById('fullName'),
@@ -128,7 +121,6 @@ const dom = {
   membershipDetailList: document.getElementById('membership-detail-list'),
 };
 
-// --- TONE & ICONS ---
 const toneToClasses = {
   neutral: { badge: 'inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600', icon: 'flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500' },
   progress: { badge: 'inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-600', icon: 'flex h-12 w-12 items-center justify-center rounded-full border border-indigo-100 bg-white text-indigo-500' },
@@ -143,21 +135,34 @@ const ICONS = {
   error: `<span class="icon-mask" style="--icon-src: url('./assets/icons/exclamation-triangle.svg');" aria-hidden="true"></span>`,
 };
 
-// --- RENDER FUNCTIONS ---
+// MODIFIED: Define terminal failure states for easier checking.
+const terminalFailureStates = ['failed', 'invalid_code'];
+
 function setState(update) {
+  logger.debug('setState called with:', update);
   Object.assign(state, update);
   render();
 }
 
 function render() {
+  logger.debug('Render triggered. Current state:', JSON.parse(JSON.stringify(state)));
   dom.form.classList.toggle('hidden', state.registrationSuccess);
   dom.successContainer.classList.toggle('hidden', !state.registrationSuccess);
 
   if (state.registrationSuccess) {
-    dom.statusIcon.className = toneToClasses.success.icon;
-    dom.statusIcon.innerHTML = ICONS.success;
+    // MODIFIED: Use the new array to check for any failure state.
+    const activationFailed = terminalFailureStates.includes(state.activation.status);
+    
+    dom.statusIcon.className = activationFailed ? toneToClasses.error.icon : toneToClasses.success.icon;
+    dom.statusIcon.innerHTML = activationFailed ? ICONS.error : ICONS.success;
     dom.statusTitle.textContent = t('status_success_title');
-    dom.statusSubtitle.textContent = state.activation.id ? t('status_success_with_code_subtitle') : t('status_success_subtitle');
+    if (state.activation.id) {
+        dom.statusSubtitle.textContent = activationFailed
+            ? t('status_success_with_code_failed_subtitle')
+            : t('status_success_with_code_subtitle');
+    } else {
+        dom.statusSubtitle.textContent = t('status_success_subtitle');
+    }
   } else {
     dom.statusIcon.className = toneToClasses.neutral.icon;
     dom.statusIcon.innerHTML = ICONS.idle;
@@ -183,7 +188,11 @@ function render() {
     if(state.activation.id) {
         renderActivationTimeline();
     }
-    renderMembershipDetails();
+    if(!terminalFailureStates.includes(state.activation.status)) {
+        renderMembershipDetails();
+    } else {
+        dom.membershipDetailContainer.classList.add('hidden');
+    }
   }
 
   syncPasswordToggles();
@@ -191,27 +200,31 @@ function render() {
 
 function renderActivationTimeline() {
     const status = state.activation.status;
-    const toneKey = status === 'success' ? 'success' : status === 'failed' ? 'error' : 'progress';
-    const pillKey = status === 'success' ? 'activation_status_pill_success' : status === 'failed' ? 'activation_status_pill_failed' : 'activation_status_pill_waiting';
+    // MODIFIED: Use the array to determine the tone and pill text.
+    const isFailed = terminalFailureStates.includes(status);
+    const toneKey = status === 'success' ? 'success' : isFailed ? 'error' : 'progress';
+    const pillKey = status === 'success' ? 'activation_status_pill_success' : isFailed ? 'activation_status_pill_failed' : 'activation_status_pill_waiting';
 
     dom.activationStatusBadge.className = toneToClasses[toneKey].badge;
     dom.activationStatusBadge.textContent = t(pillKey);
     
-    if (status === 'failed' && !state.error) {
-        setState({ error: t('error_activation_failed_contact') });
+    // MODIFIED: Handle specific error messages for different failure types.
+    if (isFailed && !state.error) {
+        logger.info(`Activation status is "${status}", setting UI error message.`);
+        const errorMessage = status === 'invalid_code' 
+            ? t('error_invalid_code_message') 
+            : t('error_activation_failed_contact');
+        setState({ error: errorMessage });
     }
 
     const TIMELINE_ORDER = ['waiting_validation', 'validating_code', 'assigning_plan', 'success'];
     const currentIndex = TIMELINE_ORDER.indexOf(status);
-
     Array.from(dom.timeline.querySelectorAll('[data-status-item]')).forEach(
       (item) => {
         const itemStatus = item.getAttribute('data-status-item');
         const dot = item.querySelector('div[aria-hidden]');
         const index = TIMELINE_ORDER.indexOf(itemStatus);
-        
         item.classList.remove('border-indigo-200', 'bg-indigo-50', 'shadow-sm', 'border-gray-200/70', 'bg-white', 'opacity-60');
-
         if (index < currentIndex) {
           item.classList.add('border-indigo-200', 'bg-indigo-50');
           if (dot) dot.className = 'h-2 w-2 rounded-full bg-indigo-400 mt-2';
@@ -229,35 +242,25 @@ function renderActivationTimeline() {
 function renderMembershipDetails() {
   const { status, metadata, code } = state.activation;
   const showDetails = status === 'success' && metadata;
-
   if (!showDetails) {
     dom.membershipDetailContainer.classList.add('hidden');
     return;
   }
-
   const pairs = [
-    [t('metadata_name'), metadata.customerName || dom.fullName.value],
-    [t('metadata_email'), metadata.customerEmail || dom.email.value],
+    [t('metadata_name'), dom.fullName.value],
+    [t('metadata_email'), dom.email.value],
     [t('metadata_plan'), metadata.planType],
     [t('metadata_expires'), formatTimestamp(metadata.membershipExpiresAt)],
     [t('metadata_activation_code'), code],
   ].filter(([, value]) => Boolean(value));
-
-  dom.membershipDetailList.innerHTML = pairs
-    .map(
-      ([label, value]) => `
+  dom.membershipDetailList.innerHTML = pairs.map(([label, value]) => `
       <div>
         <dt class="text-xs uppercase tracking-wide text-gray-500">${label}</dt>
         <dd class="text-sm font-medium text-gray-800">${value}</dd>
-      </div>`
-    )
-    .join('');
-  
+      </div>`).join('');
   dom.membershipDetailContainer.classList.remove('hidden');
 }
 
-
-// --- UTILITY FUNCTIONS ---
 function setButtonLoading(button, isLoading, idleLabel, loadingLabel) {
   if (!button) return;
   if (isLoading) {
@@ -267,12 +270,6 @@ function setButtonLoading(button, isLoading, idleLabel, loadingLabel) {
   }
 }
 
-/**
- * Hide or shows HTML element
- *
- * @param {HTMLElement} element HTML element to be hidden or unhide
- * @param {boolean} isHidden Set to hide or show
- */
 function setElementHidden(element, isHidden) {
   if (isHidden) element.setAttribute('hidden', 'true');
   else element.removeAttribute('hidden');
@@ -283,8 +280,7 @@ function formatTimestamp(value) {
   if (typeof value === 'string' && (value === t('metadata_expires_never'))) return null;
   if (typeof value.toDate === 'function') return formatDate(value.toDate());
   if (typeof value === 'object' && 'seconds' in value && 'nanoseconds' in value) {
-    const millis = value.seconds * 1000 + value.nanoseconds / 1e6;
-    return formatDate(new Date(millis));
+    return formatDate(new Date(value.seconds * 1000 + value.nanoseconds / 1e6));
   }
   if (typeof value === 'string' || typeof value === 'number') {
     const date = new Date(value);
@@ -307,14 +303,11 @@ function syncPasswordToggles() {
     if (!targetId) return;
     const input = document.getElementById(targetId);
     if (!input) return;
-
     const showLabel = t(button.dataset.labelShowKey);
     const hideLabel = t(button.dataset.labelHideKey);
     const isPassword = input.type === 'password';
-
     setElementHidden(button.querySelector('[data-toggle-password-icon="show"]'), !isPassword);
     setElementHidden(button.querySelector('[data-toggle-password-icon="hide"]'), isPassword);
-
     button.setAttribute('aria-label', isPassword ? showLabel : hideLabel);
     button.setAttribute('aria-pressed', String(!isPassword));
     button.disabled = state.isSubmitting || input.disabled;
@@ -327,10 +320,8 @@ function togglePasswordVisibility(button) {
   const input = document.getElementById(targetId);
   if (!input) return;
   input.type = input.type === 'password' ? 'text' : 'password';
-  syncPasswordToggles();
 }
 
-// --- VALIDATION ---
 function validateName(value) { return value.trim().length > 2; }
 function validateEmail(value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
 function validatePhone(value) { return /^[0-9\s-()+]{6,}$/.test(value); }
@@ -342,9 +333,9 @@ function validatePassword(value) {
   return value.length >= 8 && hasUpper && hasLower && hasNumber && hasSymbol;
 }
 
-// --- EVENT LISTENERS ---
 dom.form.addEventListener('submit', async (event) => {
   event.preventDefault();
+  logger.info('Registration form submitted.');
   if (!state.ready || state.isSubmitting) return;
 
   const fullName = dom.fullName.value.trim();
@@ -363,9 +354,12 @@ dom.form.addEventListener('submit', async (event) => {
   setState({ isSubmitting: true, error: null });
 
   try {
+    logger.info('Calling registration service for email:', email);
     await registrationService.register({ fullName, email, phoneNumber, password });
+    logger.info('Registration service call successful.');
     
     if (activationCode) {
+      logger.info('Activation code provided, calling activation service.');
       const { id } = await activationService.createActivation({ email, activationCode });
       setState({
         registrationSuccess: true,
@@ -373,6 +367,7 @@ dom.form.addEventListener('submit', async (event) => {
       });
       subscribeToActivation(id);
     } else {
+      logger.info('No activation code provided, showing default success state.');
       setState({
         registrationSuccess: true,
         activation: {
@@ -388,7 +383,7 @@ dom.form.addEventListener('submit', async (event) => {
       });
     }
   } catch (error) {
-    console.error('Registration failed', error);
+    logger.error('Registration failed.', error);
     let errorMessage = t('error_registration_failed');
     if (error.code === 'auth/email-already-in-use') {
         errorMessage = t('error_email_in_use');
@@ -403,16 +398,18 @@ dom.passwordToggles.forEach((button) => {
   button.addEventListener('click', () => togglePasswordVisibility(button));
 });
 
-// --- ACTIVATION FLOW LOGIC ---
 function subscribeToActivation(id) {
+  logger.info(`Subscribing to real-time updates for activation ID: ${id}`);
   if (unsubscribeCurrent) unsubscribeCurrent();
   unsubscribeCurrent = activationService.onActivationChange(id, (doc) => {
     if (!doc) {
+      logger.error(`Activation document ${id} not found or was deleted.`);
       state.activation.status = 'failed';
       state.activation.error = 'Activation record not found.';
       render();
       return;
     }
+    logger.debug(`Received update for activation ID: ${id}. New status: ${doc.status}`);
     state.activation.status = doc.status || state.activation.status;
     state.activation.error = doc.error || null;
     state.activation.metadata = doc.metadata || null;
@@ -420,7 +417,6 @@ function subscribeToActivation(id) {
   });
 }
 
-// --- LANGUAGE SWITCHER ---
 const langSwitcher = document.getElementById('lang-switcher');
 const langBtn = document.getElementById('lang-btn');
 const langMenu = document.getElementById('lang-menu');
@@ -442,6 +438,7 @@ if (langBtn && langMenu) {
 
 function setLanguage(lang) {
   currentLang = lang;
+  logger.info(`Language changed to: ${lang}`);
   document.querySelectorAll('[data-translate-key]').forEach(el => {
     const key = el.getAttribute('data-translate-key');
     if (translations[key]?.[lang]) el.innerHTML = translations[key][lang];
@@ -456,8 +453,6 @@ function setLanguage(lang) {
   render();
 }
 
-// --- FIREBASE SERVICES ---
-
 class FirebaseRegistrationService {
     constructor(authModule, db, firestoreModule) {
         this.authModule = authModule;
@@ -465,14 +460,11 @@ class FirebaseRegistrationService {
         this.fs = firestoreModule;
         this.auth = authModule.getAuth();
     }
-
     async register({ fullName, email, phoneNumber, password }) {
         const { createUserWithEmailAndPassword } = this.authModule;
         const { doc, setDoc, serverTimestamp } = this.fs;
-
         const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
         const user = userCredential.user;
-
         const userDocRef = doc(this.db, 'users', user.uid);
         await setDoc(userDocRef, {
             uid: user.uid,
@@ -494,7 +486,6 @@ class FirebaseActivationService {
     this.fs = firestore;
     this.collectionPath = config.collectionPath || 'activations';
   }
-
   async createActivation({ email, activationCode }) {
     const { collection, doc, setDoc, serverTimestamp, Timestamp } = this.fs;
     const colRef = collection(this.db, this.collectionPath);
@@ -514,7 +505,6 @@ class FirebaseActivationService {
 
     return { id: docRef.id };
   }
-
   onActivationChange(id, callback) {
     const { doc, onSnapshot } = this.fs;
     const docRef = doc(this.db, this.collectionPath, id);
@@ -528,15 +518,15 @@ class FirebaseActivationService {
         callback({ id: snapshot.id, ...snapshot.data() });
       },
       (error) => {
-        console.error('Firestore listener error', error);
+        logger.error('Firestore listener error.', error);
         callback({ id, status: 'failed', error: 'Realtime updates failed.' });
       }
     );
   }
 }
 
-// --- APP START ---
 (async () => {
+  logger.info('Application starting...');
   try {
     const firebaseConfig = {
       apiKey: 'AIzaSyB9_J1AZkSbCM9v3PeV4m33qojHX51bLwg',
@@ -557,10 +547,11 @@ class FirebaseActivationService {
 
     registrationService = new FirebaseRegistrationService(authModule, db, firestoreModule);
     activationService = new FirebaseActivationService(app, db, firestoreModule, {});
-
+    
+    logger.info('Firebase services initialized successfully.');
     setState({ ready: true });
   } catch (error) {
-    console.error("Firebase initialization failed:", error);
+    logger.error("Firebase initialization failed:", error);
     setState({
       ready: false,
       error: 'Unable to start registration flow. Please check your connection or contact support.',
