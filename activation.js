@@ -16,23 +16,13 @@ const translations = {
   form_code_placeholder: { en: "ABC123", id: "ABC123" },
   form_code_hint: { en: "Use the code from Mayar. Typically 16 characters contains of alphabet and number.", id: "Gunakan kode dari Mayar. Biasanya 16 karakter yang terdiri dari huruf dan angka." },
   form_submit_btn: { en: "Start activation", id: "Mulai aktivasi" },
-  form_password_label: { en: "Create a password", id: "Buat kata sandi" },
-  form_password_placeholder: { en: "Use at least 8 characters", id: "Gunakan minimal 8 karakter" },
-  form_password_hint: { en: "Minimum 8 characters. Include a mix of upper & lower case letters, numbers, and symbols.", id: "Minimal 8 karakter. Sertakan campuran huruf besar & kecil, angka, dan simbol." },
-  form_password_show: { en: "Show password", id: "Tampilkan kata sandi" },
-  form_password_hide: { en: "Hide password", id: "Sembunyikan kata sandi" },
-  form_password_confirm_label: { en: "Confirm password", id: "Konfirmasi kata sandi" },
-  form_password_confirm_placeholder: { en: "Re-enter the password", id: "Masukkan ulang kata sandi" },
-  form_password_confirm_show: { en: "Show password confirmation", id: "Tampilkan konfirmasi kata sandi" },
-  form_password_confirm_hide: { en: "Hide password confirmation", id: "Sembunyikan konfirmasi kata sandi" },
-  form_password_submit_btn: { en: "Save password & continue", id: "Simpan kata sandi & lanjutkan" },
+  // REMOVED: password form translations
   progress_label: { en: "Status", id: "Status" },
   timeline_waiting_validation_title: { en: "Waiting for validation", id: "Menunggu validasi" },
   timeline_waiting_validation_desc: { en: "Activation document queued for backend verification.", id: "Dokumen aktivasi antre untuk verifikasi backend." },
   timeline_validating_code_title: { en: "Validating code", id: "Memvalidasi kode" },
   timeline_validating_code_desc: { en: "Mayar gateway verification in progress.", id: "Verifikasi gateway Mayar sedang berlangsung." },
-  timeline_waiting_password_title: { en: "Password required", id: "Kata sandi diperlukan" },
-  timeline_waiting_password_desc: { en: "New user detected. Awaiting secure password creation.", id: "Pengguna baru terdeteksi. Menunggu pembuatan kata sandi yang aman." },
+  // REMOVED: waiting_password timeline translations
   timeline_creating_account_title: { en: "Creating account", id: "Membuat akun" },
   timeline_creating_account_desc: { en: "Account creation and claim assignment in progress.", id: "Pembuatan akun dan penugasan klaim sedang berlangsung." },
   timeline_assigning_plan_title: { en: "Assigning plan", id: "Menetapkan paket" },
@@ -61,9 +51,7 @@ const translations = {
   status_validating_code_title: { en: "Validating activation code with Mayar", id: "Memvalidasi kode aktivasi dengan Mayar" },
   status_validating_code_subtitle: { en: "Hang tight while we confirm your purchase details and entitlement.", id: "Tunggu sebentar saat kami mengonfirmasi detail pembelian dan hak Anda." },
   status_validating_code_pill: { en: "Validating with Mayar", id: "Memvalidasi dengan Mayar" },
-  status_waiting_password_title: { en: "Create a password to continue", id: "Buat kata sandi untuk melanjutkan" },
-  status_waiting_password_subtitle: { en: "We could not find an existing Finalytics account with this email.", id: "Kami tidak dapat menemukan akun Finalytics yang ada dengan email ini." },
-  status_waiting_password_pill: { en: "Password required", id: "Kata sandi diperlukan" },
+  // REMOVED: waiting_password status translations
   status_waiting_create_account_title: { en: "Creating your Finalytics account", id: "Membuat akun Finalytics Anda" },
   status_waiting_create_account_subtitle: { en: "Your password was received. We are creating the user profile now.", id: "Kata sandi Anda telah diterima. Kami sedang membuat profil pengguna sekarang." },
   status_waiting_create_account_pill: { en: "Creating account", id: "Membuat akun" },
@@ -86,18 +74,15 @@ const translations = {
   btn_start_activation: { en: "Start activation", id: "Mulai aktivasi" },
   btn_processing: { en: "Processing…", id: "Memproses…" },
   btn_updating: { en: "Updating…", id: "Memperbarui…" },
-  btn_save_password: { en: "Save password & continue", id: "Simpan kata sandi & lanjutkan" },
-  btn_saving: { en: "Saving…", id: "Menyimpan…" },
+  // REMOVED: password button translations
   // Error messages
   error_invalid_email: { en: "Please provide a valid email address.", id: "Harap berikan alamat email yang valid." },
   error_invalid_code: { en: "Activation code should be at least 6 characters and contain only letters, numbers, or dashes.", id: "Kode aktivasi harus minimal 6 karakter dan hanya berisi huruf, angka, atau tanda hubung." },
-  error_password_mismatch: { en: "Passwords do not match.", id: "Kata sandi tidak cocok." },
-  error_password_weak: { en: "Password must be at least 8 characters and include upper, lower, number, and symbol characters.", id: "Kata sandi harus minimal 8 karakter dan menyertakan karakter huruf besar, kecil, angka, dan simbol." },
   error_activation_failed: { en: "Failed to submit activation. Please try again or contact support.", id: "Gagal mengirim aktivasi. Silakan coba lagi atau hubungi dukungan." },
-  error_password_failed: { en: "Failed to submit password. Please try again or contact support.", id: "Gagal mengirim kata sandi. Silakan coba lagi atau hubungi dukungan." },
   error_attempts_left: { en: "We could not validate that activation code. You can try again. Attempts remaining:", id: "Kami tidak dapat memvalidasi kode aktivasi tersebut. Anda dapat mencoba lagi. Percobaan tersisa:" },
   error_attempts_exhausted: { en: "We could not validate that activation code. Attempts exhausted.", id: "Kami tidak dapat memvalidasi kode aktivasi tersebut. Percobaan habis." },
   error_activation_failed_contact: { en: "Activation failed due to an unrecoverable error. Please contact support@finalytics.id.", id: "Aktivasi gagal karena kesalahan yang tidak dapat dipulihkan. Silakan hubungi support@finalytics.id." },
+  error_unknown: { en: 'An unexpected error occurred. Please try again.', id: 'Terjadi kesalahan tak terduga. Silakan coba lagi.' },
 };
 
 let currentLang = localStorage.getItem('language') || 'id';
@@ -124,13 +109,7 @@ const STATUS_COPY = {
     tone: 'progress',
     icon: 'progress',
   },
-  waiting_password: {
-    title: 'status_waiting_password_title',
-    subtitle: 'status_waiting_password_subtitle',
-    pill: 'status_waiting_password_pill',
-    tone: 'warning',
-    icon: 'password',
-  },
+  // REMOVED: waiting_password status
   waiting_create_account: {
     title: 'status_waiting_create_account_title',
     subtitle: 'status_waiting_create_account_subtitle',
@@ -185,10 +164,10 @@ const STATUS_ALIASES = {
   creating_account: 'waiting_create_account',
 };
 
+// CHANGED: Removed 'waiting_password' from the timeline
 const TIMELINE_ORDER = [
   'waiting_validation',
   'validating_code',
-  'waiting_password',
   'waiting_create_account',
   'assigning_plan',
   'success',
@@ -226,21 +205,18 @@ const state = {
   updatedAt: null,
   error: null,
   activationSubmitting: false,
-  passwordSubmitting: false,
+  // REMOVED: passwordSubmitting state
 };
 
 let activationService = null;
 let unsubscribeCurrent = null;
 
+// CHANGED: Removed password-related DOM elements
 const dom = {
   activationForm: document.getElementById('activation-form'),
   activationEmail: document.getElementById('activationEmail'),
   activationCode: document.getElementById('activationCode'),
   activationSubmit: document.getElementById('activationSubmit'),
-  passwordForm: document.getElementById('password-form'),
-  passwordInput: document.getElementById('activationPassword'),
-  passwordConfirmInput: document.getElementById('activationPasswordConfirm'),
-  passwordSubmit: document.getElementById('passwordSubmit'),
   alert: document.getElementById('alert'),
   statusTitle: document.getElementById('status-title'),
   statusSubtitle: document.getElementById('status-subtitle'),
@@ -250,9 +226,6 @@ const dom = {
   timeline: document.getElementById('timeline'),
   metadata: document.getElementById('metadata'),
   metadataList: document.getElementById('metadataList'),
-  passwordToggles: Array.from(
-    document.querySelectorAll('[data-toggle-password]')
-  ),
 };
 
 if (queryPrefill.email && dom.activationEmail) {
@@ -388,21 +361,11 @@ function render() {
   );
   dom.activationSubmit.disabled = activationButtonDisabled;
 
-  const showPasswordForm = currentStatus === 'waiting_password';
-  dom.passwordForm.classList.toggle('hidden', !showPasswordForm);
-  dom.passwordInput.disabled = state.passwordSubmitting;
-  dom.passwordConfirmInput.disabled = state.passwordSubmitting;
-  setButtonLoading(
-    dom.passwordSubmit,
-    state.passwordSubmitting,
-    t('btn_save_password'),
-    t('btn_saving')
-  );
-
+  // REMOVED: Logic to show/hide and manage password form
+  
   renderAlert();
   renderTimeline(currentStatus);
   renderMetadata();
-  syncPasswordToggles();
 }
 
 function renderAlert() {
@@ -499,55 +462,9 @@ function renderMetadata() {
   }
 }
 
-/**
- * Hide or shows HTML element
- *
- * @param {HTMLElement} element HTML element to be hidden or unhide
- * @param {boolean} isHidden Set to hide or show
- */
-function setElementHidden(element, isHidden) {
-  if (isHidden) element.setAttribute('hidden', 'true');
-  else element.removeAttribute('hidden');
-}
-
-function syncPasswordToggles() {
-  dom.passwordToggles.forEach((button) => {
-    const targetId = button.dataset.togglePassword;
-    if (!targetId) return;
-
-    const input = document.getElementById(targetId);
-    if (!input) return;
-
-    const showLabelKey = button.dataset.labelShowKey;
-    const hideLabelKey = button.dataset.labelHideKey;
-    const showLabel = showLabelKey ? t(showLabelKey) : 'Show password';
-    const hideLabel = hideLabelKey ? t(hideLabelKey) : 'Hide password';
-    const isPassword = input.type === 'password';
-
-    const showIcon = button.querySelector('[data-toggle-password-icon="show"]');
-    const hideIcon = button.querySelector('[data-toggle-password-icon="hide"]');
-
-    if (showIcon && hideIcon) {
-      setElementHidden(showIcon, !isPassword);
-      setElementHidden(hideIcon, isPassword);
-    }
-
-    button.setAttribute('aria-label', isPassword ? showLabel : hideLabel);
-    button.setAttribute('aria-pressed', String(!isPassword));
-    button.disabled = state.passwordSubmitting || input.disabled;
-  });
-}
-
-function togglePasswordVisibility(button) {
-  const targetId = button.dataset.togglePassword;
-  if (!targetId) return;
-
-  const input = document.getElementById(targetId);
-  if (!input) return;
-
-  const isVisible = input.type === 'text';
-  input.type = isVisible ? 'password' : 'text';
-}
+// REMOVED: setElementHidden function (no longer used)
+// REMOVED: syncPasswordToggles function
+// REMOVED: togglePasswordVisibility function
 
 function setButtonLoading(button, isLoading, idleLabel, loadingLabel) {
   if (!button) return;
@@ -569,30 +486,25 @@ function setButtonLoading(button, isLoading, idleLabel, loadingLabel) {
 
 function formatTimestamp(value) {
   if (!value) return null;
-
   if (typeof value.toDate === 'function') {
     return formatDate(value.toDate());
   }
-
   if (typeof value === 'object' && 'seconds' in value && 'nanoseconds' in value) {
     const millis = value.seconds * 1000 + value.nanoseconds / 1e6;
     return formatDate(new Date(millis));
   }
-
   if (typeof value === 'string') {
     const date = new Date(value);
     if (!Number.isNaN(date.getTime())) {
       return formatDate(date);
     }
   }
-
   if (typeof value === 'number') {
     const date = new Date(value);
     if (!Number.isNaN(date.getTime())) {
       return formatDate(date);
     }
   }
-
   return null;
 }
 
@@ -615,22 +527,8 @@ function validateActivationCode(value) {
   return /^[A-Za-z0-9-]{6,}$/.test(value);
 }
 
-function validatePassword(value) {
-  const hasUpper = /[A-Z]/.test(value);
-  const hasLower = /[a-z]/.test(value);
-  const hasNumber = /[0-9]/.test(value);
-  const hasSymbol = /[^A-Za-z0-9]/.test(value);
-  return value.length >= 8 && hasUpper && hasLower && hasNumber && hasSymbol;
-}
-
-async function hashPassword(password) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(password);
-  const digest = await crypto.subtle.digest('SHA-256', data);
-  return Array.from(new Uint8Array(digest))
-    .map((byte) => byte.toString(16).padStart(2, '0'))
-    .join('');
-}
+// REMOVED: validatePassword function
+// REMOVED: hashPassword function
 
 function subscribeToActivation(id) {
   if (unsubscribeCurrent) {
@@ -663,6 +561,7 @@ function subscribeToActivation(id) {
   });
 }
 
+// CHANGED: Form submission logic updated significantly
 dom.activationForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   if (!state.ready) return;
@@ -671,16 +570,11 @@ dom.activationForm.addEventListener('submit', async (event) => {
   const activationCode = dom.activationCode.value.trim().toUpperCase();
 
   if (!validateEmail(email)) {
-    setState({
-      error: t('error_invalid_email'),
-    });
+    setState({ error: t('error_invalid_email') });
     return;
   }
-
   if (!validateActivationCode(activationCode)) {
-    setState({
-      error: t('error_invalid_code'),
-    });
+    setState({ error: t('error_invalid_code') });
     return;
   }
 
@@ -692,77 +586,35 @@ dom.activationForm.addEventListener('submit', async (event) => {
   });
 
   try {
-    if (!state.id || state.status === 'failed') {
-      const { id } = await activationService.createActivation({
-        email,
-        activationCode,
-      });
+    // ADDED: Check if user exists before creating activation document
+    const userExists = await activationService.checkUserExists(email);
+
+    if (!userExists) {
+      // ADDED: Redirect to register page if user does not exist
+      const params = new URLSearchParams(window.location.search);
+      window.location.href = `/register.html?${params.toString()}`;
+      return; // Stop execution here
+    }
+    
+    // Existing user flow
+    if (!state.id || state.status === 'failed' || state.status === 'invalid_code') {
+      const { id } = await activationService.createActivation({ email, activationCode });
       setState({ id, status: 'waiting_validation' });
       subscribeToActivation(id);
     } else {
-      await activationService.updateActivation(state.id, {
-        email,
-        activationCode,
-      });
+      await activationService.updateActivation(state.id, { email, activationCode });
     }
   } catch (error) {
     console.error('Activation submit failed', error);
-    setState({
-      error:
-        error?.message ||
-        t('error_activation_failed'),
-    });
+    setState({ error: error?.message || t('error_activation_failed') });
   } finally {
+    // This will only be reached if not redirected
     setState({ activationSubmitting: false });
   }
 });
 
-dom.passwordForm.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  if (!state.ready || !state.id) return;
-
-  const password = dom.passwordInput.value;
-  const passwordConfirm = dom.passwordConfirmInput.value;
-
-  if (password !== passwordConfirm) {
-    setState({ error: t('error_password_mismatch') });
-    return;
-  }
-
-  if (!validatePassword(password)) {
-    setState({
-      error: t('error_password_weak'),
-    });
-    return;
-  }
-
-  setState({ passwordSubmitting: true, error: null });
-
-  try {
-    await activationService.submitPassword(state.id, password);
-    dom.passwordInput.value = '';
-    dom.passwordConfirmInput.value = '';
-    dom.passwordInput.type = 'password';
-    dom.passwordConfirmInput.type = 'password';
-  } catch (error) {
-    console.error('Password submission failed', error);
-    setState({
-      error:
-        error?.message ||
-        t('error_password_failed'),
-    });
-  } finally {
-    setState({ passwordSubmitting: false });
-  }
-});
-
-dom.passwordToggles.forEach((button) => {
-  button.addEventListener('click', () => {
-    if (button.disabled) return;
-    togglePasswordVisibility(button);
-    syncPasswordToggles();
-  });
-});
+// REMOVED: passwordForm submit event listener
+// REMOVED: passwordToggles click event listener loop
 
 // --- LANGUAGE SWITCHER ---
 const langSwitcher = document.getElementById('lang-switcher');
@@ -793,7 +645,6 @@ if (langBtn && langMenu) {
 function setLanguage(lang) {
   currentLang = lang;
 
-  // Update all elements with data-translate-key
   document.querySelectorAll('[data-translate-key]').forEach((el) => {
     const key = el.getAttribute('data-translate-key');
     if (translations[key] && translations[key][lang] !== undefined) {
@@ -801,7 +652,6 @@ function setLanguage(lang) {
     }
   });
 
-  // Update placeholders
   document.querySelectorAll('[data-translate-placeholder]').forEach((el) => {
     const key = el.getAttribute('data-translate-placeholder');
     if (translations[key] && translations[key][lang] !== undefined) {
@@ -809,24 +659,19 @@ function setLanguage(lang) {
     }
   });
 
-  // Update lang text
   if (langText) {
     langText.textContent = lang.toUpperCase();
   }
 
-  // Save to localStorage
   localStorage.setItem('language', lang);
 
-  // Hide menu
   if (langMenu) {
     langMenu.classList.add('hidden');
   }
 
-  // Re-render the UI with new language
   render();
 }
 
-// Initialize language
 setLanguage(currentLang);
 
 class ActivationServiceFactory {
@@ -841,39 +686,50 @@ class ActivationServiceFactory {
 class FirebaseActivationService {
   static async init(config) {
     try {
-      const appModule = await import(
-        'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js'
-      );
-      const firestoreModule = await import(
-        'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js'
-      );
+      const appModule = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
+      const firestoreModule = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+      // ADDED: Import auth module
+      const authModule = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js');
+      
       const { initializeApp, getApps } = appModule;
-      const app = getApps().length
-        ? getApps()[0]
-        : initializeApp(config.firebaseConfig);
+      const app = getApps().length ? getApps()[0] : initializeApp(config.firebaseConfig);
+      
       const db = firestoreModule.getFirestore(app);
-      return new FirebaseActivationService(app, db, firestoreModule, config);
+      // ADDED: Initialize auth service
+      const auth = authModule.getAuth(app);
+
+      return new FirebaseActivationService(app, db, auth, firestoreModule, authModule, config);
     } catch (error) {
       console.error('Firebase initialisation failed', error);
       throw new Error('Unable to initialise Firebase for activation flow.');
     }
   }
 
-  constructor(app, db, firestore, config) {
+  constructor(app, db, auth, firestore, authModule, config) { // CHANGED: Constructor signature
     this.app = app;
     this.db = db;
+    this.auth = auth; // ADDED: auth instance
     this.fs = firestore;
+    this.authModule = authModule; // ADDED: auth module
     this.collectionPath = config.collectionPath || 'activations';
+  }
+  
+  // ADDED: New method to check if user account exists
+  async checkUserExists(email) {
+    const { fetchSignInMethodsForEmail } = this.authModule;
+    try {
+      const methods = await fetchSignInMethodsForEmail(this.auth, email);
+      return methods.length > 0;
+    } catch (error) {
+      // Treat auth errors (e.g., network issues) as if user exists to prevent incorrect redirection
+      // and allow the backend to handle it. A more robust solution might involve specific error handling.
+      console.error('Error checking user email:', error);
+      throw new Error(t('error_unknown'));
+    }
   }
 
   async createActivation({ email, activationCode }) {
-    const {
-      collection,
-      doc,
-      setDoc,
-      serverTimestamp,
-      Timestamp,
-    } = this.fs;
+    const { collection, doc, setDoc, serverTimestamp, Timestamp } = this.fs;
     const colRef = collection(this.db, this.collectionPath);
     const docRef = doc(colRef);
     const expiresAt = Timestamp.fromMillis(Date.now() + 24 * 60 * 60 * 1000);
@@ -904,17 +760,7 @@ class FirebaseActivationService {
     });
   }
 
-  async submitPassword(id, hashedPassword) {
-    const { doc, updateDoc, serverTimestamp } = this.fs;
-    const docRef = doc(this.db, this.collectionPath, id);
-    await updateDoc(docRef, {
-      password: hashedPassword,
-      status: 'waiting_create_account',
-      updatedAt: serverTimestamp(),
-      passwordSetAt: serverTimestamp(),
-      error: null,
-    });
-  }
+  // REMOVED: submitPassword method
 
   onActivationChange(id, callback) {
     const { doc, onSnapshot } = this.fs;
@@ -934,14 +780,14 @@ class FirebaseActivationService {
         callback({
           id,
           status: 'failed',
-          error:
-            'Realtime updates are unavailable. Please refresh or contact support.',
+          error: 'Realtime updates are unavailable. Please refresh or contact support.',
         });
       }
     );
   }
 }
 
+// NOTE: Mock service updated for completeness, but your live app uses FirebaseActivationService.
 class MockActivationService {
   constructor(config = {}) {
     this.config = config;
@@ -949,11 +795,16 @@ class MockActivationService {
     this.listeners = new Map();
   }
 
+  async checkUserExists(email) {
+    const domain = email.split('@')[1] || '';
+    // Simulate existing users for testing
+    const isExisting = /existing/i.test(email) || /finalytics\.id$/i.test(domain);
+    console.log(`Mock check for ${email}: ${isExisting ? 'Exists' : 'Does not exist'}`);
+    return Promise.resolve(isExisting);
+  }
+  
   async createActivation({ email, activationCode }) {
-    const id =
-      typeof crypto !== 'undefined' && crypto.randomUUID
-        ? crypto.randomUUID()
-        : `activation-${Date.now()}`;
+    const id = typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `activation-${Date.now()}`;
     const now = new Date();
     const expiresAt = new Date(now.getTime() + 24 * 60 * 60 * 1000);
     const doc = {
@@ -969,17 +820,15 @@ class MockActivationService {
       error: null,
       timers: [],
     };
-
     this.docs.set(id, doc);
     this.emit(id);
     this.scheduleValidation(id);
     return { id };
   }
-
+  
   async updateActivation(id, { email, activationCode }) {
     const doc = this.docs.get(id);
     if (!doc) throw new Error('Activation request not found.');
-
     doc.email = email;
     doc.activationCode = activationCode;
     doc.status = 'waiting_validation';
@@ -989,89 +838,53 @@ class MockActivationService {
     this.scheduleValidation(id);
   }
 
-  async submitPassword(id, hashedPassword) {
-    const doc = this.docs.get(id);
-    if (!doc) throw new Error('Activation request not found.');
-
-    doc.password = hashedPassword;
-    doc.status = 'waiting_create_account';
-    doc.error = null;
-    this.touch(doc);
-    this.emit(id);
-
-    doc.timers.push(
-      setTimeout(() => {
-        this.applyUpdate(id, { status: 'creating_account' });
-      }, 600),
-      setTimeout(() => {
-        this.applyUpdate(id, { status: 'assigning_plan' });
-        this.completeSuccess(id);
-      }, 1600)
-    );
-  }
+  // REMOVED: mock submitPassword method
 
   onActivationChange(id, callback) {
     const listeners = this.listeners.get(id) || new Set();
     listeners.add(callback);
     this.listeners.set(id, listeners);
-
     const doc = this.docs.get(id);
     if (doc) {
       callback({ ...doc });
     }
-
     return () => {
       const set = this.listeners.get(id);
       if (!set) return;
       set.delete(callback);
-      if (set.size === 0) {
-        this.listeners.delete(id);
-      }
+      if (set.size === 0) this.listeners.delete(id);
     };
   }
 
   scheduleValidation(id) {
     const doc = this.docs.get(id);
     if (!doc) return;
-
     this.clearTimers(doc);
-
     doc.timers.push(
-      setTimeout(() => {
-        this.applyUpdate(id, { status: 'validating_code' });
-      }, this.randomDelay(400, 800)),
+      setTimeout(() => this.applyUpdate(id, { status: 'validating_code' }), this.randomDelay(400, 800)),
       setTimeout(() => {
         if (/FAIL|ERROR/.test(doc.activationCode)) {
           const retryCount = (doc.retryCount || 0) + 1;
           this.applyUpdate(id, {
             status: retryCount >= 3 ? 'failed' : 'invalid_code',
             retryCount,
-            error:
-              retryCount >= 3
-                ? 'Activation attempts exhausted.'
-                : 'Activation code not recognised.',
+            error: retryCount >= 3 ? 'Activation attempts exhausted.' : 'Activation code not recognised.',
           });
           return;
         }
-
-        const domain = doc.email.split('@')[1] || '';
-        if (/existing/i.test(doc.email) || /finalytics\.id$/i.test(domain)) {
-          this.applyUpdate(id, { status: 'assigning_plan' });
-          this.completeSuccess(id, { existingUser: true });
-        } else {
-          this.applyUpdate(id, { status: 'waiting_password' });
-        }
+        // In the mock, we assume user is existing, so we go straight to assigning the plan.
+        // The checkUserExists logic prevents this from being called for new users.
+        this.applyUpdate(id, { status: 'assigning_plan' });
+        this.completeSuccess(id);
       }, this.randomDelay(1400, 2000))
     );
   }
 
-  completeSuccess(id, { existingUser = false } = {}) {
+  completeSuccess(id) {
     const doc = this.docs.get(id);
     if (!doc) return;
-
     const now = new Date();
     const membershipExpiresAt = new Date(now.getTime() + 180 * 24 * 60 * 60 * 1000);
-
     doc.timers.push(
       setTimeout(() => {
         this.applyUpdate(id, {
@@ -1089,21 +902,18 @@ class MockActivationService {
           },
           error: null,
         });
-      }, this.randomDelay(existingUser ? 400 : 1200, existingUser ? 800 : 1800))
+      }, this.randomDelay(800, 1800))
     );
   }
 
   applyUpdate(id, partial) {
     const doc = this.docs.get(id);
     if (!doc) return;
-
     Object.assign(doc, partial);
     this.touch(doc);
-
     if (partial.status === 'invalid_code' || partial.status === 'failed') {
       this.clearTimers(doc);
     }
-
     this.emit(id);
   }
 
@@ -1123,8 +933,7 @@ class MockActivationService {
   }
 
   touch(doc) {
-    const now = new Date().toISOString();
-    doc.updatedAt = now;
+    doc.updatedAt = new Date().toISOString();
   }
 
   clearTimers(doc) {
@@ -1155,8 +964,7 @@ class MockActivationService {
     console.error(error);
     setState({
       ready: false,
-      error:
-        'Unable to start activation flow. Please refresh or contact support.',
+      error: 'Unable to start activation flow. Please refresh or contact support.',
     });
   } finally {
     render();

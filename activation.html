@@ -237,105 +237,6 @@
                   </button>
                 </form>
 
-                <form id="password-form" class="space-y-5 hidden">
-                  <fieldset class="space-y-1">
-                    <label for="activationPassword" class="block text-sm font-medium text-gray-700" data-translate-key="form_password_label"
-                      >Create a password</label
-                    >
-                    <div class="relative">
-                      <input
-                        type="password"
-                        id="activationPassword"
-                        name="password"
-                        minlength="8"
-                        autocomplete="new-password"
-                        required
-                        data-translate-placeholder="form_password_placeholder"
-                        placeholder="Use at least 8 characters"
-                        class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 pr-20 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 transition"
-                      />
-                      <button
-                        type="button"
-                        class="absolute inset-y-0 right-2 my-1 inline-flex items-center gap-1 rounded-md px-2 text-xs font-semibold text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-200 disabled:text-gray-400 disabled:hover:bg-transparent"
-                        data-toggle-password="activationPassword"
-                        data-label-show-key="form_password_show"
-                        data-label-hide-key="form_password_hide"
-                        aria-label="Show password"
-                        aria-pressed="false"
-                      >
-                        <span
-                          class="icon-mask icon-sm"
-                          style="--icon-src: url('./assets/icons/eye.svg');"
-                          aria-hidden="true"
-                          data-toggle-password-icon="show"
-                        ></span>
-                        <span
-                          class="icon-mask icon-sm hidden"
-                          style="--icon-src: url('./assets/icons/eye-slash.svg');"
-                          aria-hidden="true"
-                          data-toggle-password-icon="hide"
-                        ></span>
-                      </button>
-                    </div>
-                    <p class="text-xs text-gray-500" data-translate-key="form_password_hint">
-                      Minimum 8 characters. Include a mix of upper &amp; lower case letters, numbers, and symbols.
-                    </p>
-                  </fieldset>
-
-                  <fieldset class="space-y-1">
-                    <label
-                      for="activationPasswordConfirm"
-                      class="block text-sm font-medium text-gray-700"
-                      data-translate-key="form_password_confirm_label"
-                      >Confirm password</label
-                    >
-                    <div class="relative">
-                      <input
-                        type="password"
-                        id="activationPasswordConfirm"
-                        name="passwordConfirm"
-                        minlength="8"
-                        autocomplete="new-password"
-                        required
-                        data-translate-placeholder="form_password_confirm_placeholder"
-                        placeholder="Re-enter the password"
-                        class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 pr-20 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 transition"
-                      />
-                      <button
-                        type="button"
-                        class="absolute inset-y-0 right-2 my-1 inline-flex items-center gap-1 rounded-md px-2 text-xs font-semibold text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-200 disabled:text-gray-400 disabled:hover:bg-transparent"
-                        data-toggle-password="activationPasswordConfirm"
-                        data-label-show-key="form_password_confirm_show"
-                        data-label-hide-key="form_password_confirm_hide"
-                        aria-label="Show password confirmation"
-                        aria-pressed="false"
-                      >
-                        <span
-                          class="icon-mask icon-sm"
-                          style="--icon-src: url('./assets/icons/eye.svg');"
-                          aria-hidden="true"
-                          data-toggle-password-icon="show"
-                        ></span>
-                        <span
-                          class="icon-mask icon-sm hidden"
-                          style="--icon-src: url('./assets/icons/eye-slash.svg');"
-                          aria-hidden="true"
-                          data-toggle-password-icon="hide"
-                        ></span>
-                      </button>
-                    </div>
-                  </fieldset>
-
-                  <button
-                    type="submit"
-                    id="passwordSubmit"
-                    data-translate-key="form_password_submit_btn"
-                    class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-indigo-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-600 disabled:cursor-not-allowed disabled:bg-indigo-300"
-                  >
-                    Save password &amp; continue
-                  </button>
-                </form>
-
                 <div id="progress" class="space-y-4">
                   <div class="flex items-center gap-2 text-sm font-semibold text-gray-700">
                     <span data-translate-key="progress_label">Status</span>
@@ -365,18 +266,6 @@
                         <p class="text-sm font-semibold text-gray-800" data-translate-key="timeline_validating_code_title">Validating code</p>
                         <p class="text-xs text-gray-500" data-translate-key="timeline_validating_code_desc">
                           Mayar gateway verification in progress.
-                        </p>
-                      </div>
-                    </li>
-                    <li
-                      data-status-item="waiting_password"
-                      class="flex items-start gap-3 rounded-lg border border-gray-200/70 bg-white px-3 py-3"
-                    >
-                      <div class="h-2 w-2 rounded-full bg-gray-300 mt-2" aria-hidden="true"></div>
-                      <div>
-                        <p class="text-sm font-semibold text-gray-800" data-translate-key="timeline_waiting_password_title">Password required</p>
-                        <p class="text-xs text-gray-500" data-translate-key="timeline_waiting_password_desc">
-                          New user detected. Awaiting secure password creation.
                         </p>
                       </div>
                     </li>
