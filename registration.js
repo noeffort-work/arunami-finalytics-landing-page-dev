@@ -249,7 +249,7 @@ function renderMembershipDetails() {
   const pairs = [
     [t('metadata_name'), dom.fullName.value],
     [t('metadata_email'), dom.email.value],
-    [t('metadata_plan'), metadata.planType],
+    [t('metadata_plan'), metadata.membershipTierName],
     [t('metadata_expires'), formatTimestamp(metadata.membershipExpiresAt)],
     [t('metadata_activation_code'), code],
   ].filter(([, value]) => Boolean(value));
