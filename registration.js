@@ -135,8 +135,35 @@ const ICONS = {
   error: `<span class="icon-mask" style="--icon-src: url('./assets/icons/exclamation-triangle.svg');" aria-hidden="true"></span>`,
 };
 
-// MODIFIED: Define terminal failure states for easier checking.
 const terminalFailureStates = ['failed', 'invalid_code'];
+
+// --- ADDED: Function to parse query parameters ---
+function getRegistrationPrefillFromQuery() {
+  if (typeof window === 'undefined') return {};
+  const params = new URLSearchParams(window.location.search);
+
+  const name = params.get('name') || params.get('fullName');
+  const email = params.get('email') || params.get('mail');
+  const phone = params.get('phone') || params.get('phoneNumber');
+  const activationCode = params.get('licenseCode') || params.get('activationCode') || params.get('code');
+
+  const result = {};
+  if (name) result.fullName = name.trim();
+  if (email) result.email = email.trim().toLowerCase();
+  if (phone) result.phoneNumber = phone.trim();
+  if (activationCode) result.activationCode = activationCode.trim().toUpperCase();
+  
+  logger.info('Parsed query parameters for pre-fill.', result);
+  return result;
+}
+
+// --- ADDED: Apply pre-filled values to the DOM ---
+const queryPrefill = getRegistrationPrefillFromQuery();
+if (queryPrefill.fullName && dom.fullName) dom.fullName.value = queryPrefill.fullName;
+if (queryPrefill.email && dom.email) dom.email.value = queryPrefill.email;
+if (queryPrefill.phoneNumber && dom.phoneNumber) dom.phoneNumber.value = queryPrefill.phoneNumber;
+if (queryPrefill.activationCode && dom.activationCode) dom.activationCode.value = queryPrefill.activationCode;
+
 
 function setState(update) {
   logger.debug('setState called with:', update);
@@ -150,7 +177,6 @@ function render() {
   dom.successContainer.classList.toggle('hidden', !state.registrationSuccess);
 
   if (state.registrationSuccess) {
-    // MODIFIED: Use the new array to check for any failure state.
     const activationFailed = terminalFailureStates.includes(state.activation.status);
     
     dom.statusIcon.className = activationFailed ? toneToClasses.error.icon : toneToClasses.success.icon;
@@ -200,7 +226,6 @@ function render() {
 
 function renderActivationTimeline() {
     const status = state.activation.status;
-    // MODIFIED: Use the array to determine the tone and pill text.
     const isFailed = terminalFailureStates.includes(status);
     const toneKey = status === 'success' ? 'success' : isFailed ? 'error' : 'progress';
     const pillKey = status === 'success' ? 'activation_status_pill_success' : isFailed ? 'activation_status_pill_failed' : 'activation_status_pill_waiting';
@@ -208,7 +233,6 @@ function renderActivationTimeline() {
     dom.activationStatusBadge.className = toneToClasses[toneKey].badge;
     dom.activationStatusBadge.textContent = t(pillKey);
     
-    // MODIFIED: Handle specific error messages for different failure types.
     if (isFailed && !state.error) {
         logger.info(`Activation status is "${status}", setting UI error message.`);
         const errorMessage = status === 'invalid_code' 
