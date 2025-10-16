@@ -592,7 +592,9 @@ dom.activationForm.addEventListener('submit', async (event) => {
     if (!userExists) {
       // ADDED: Redirect to register page if user does not exist
       const params = new URLSearchParams(window.location.search);
-      window.location.href = `/register.html?${params.toString()}`;
+      if (!params.has('email')) params.set('email', email); 
+      if (!params.has('licenseCode')) params.set('licenseCode', activationCode);
+      window.location.href = `/registration.html?${params.toString()}`;
       return; // Stop execution here
     }
     
