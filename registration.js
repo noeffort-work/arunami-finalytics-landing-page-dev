@@ -344,6 +344,7 @@ function togglePasswordVisibility(button) {
   const input = document.getElementById(targetId);
   if (!input) return;
   input.type = input.type === 'password' ? 'text' : 'password';
+  syncPasswordToggles();
 }
 
 function validateName(value) { return value.trim().length > 2; }
