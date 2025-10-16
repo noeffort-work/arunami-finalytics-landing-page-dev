@@ -1,4 +1,5 @@
-import './config/firebase.js'
+import { CURRENT_ANALYSIS_APP_HOSTNAME } from './config/analysis-app.mjs';
+import { CURRENT_FIREBASE_CONFIG } from './config/firebase.mjs';
 
 // --- TRANSLATIONS OBJECT ---
 const translations = {
@@ -64,7 +65,7 @@ const translations = {
   status_assigning_plan_subtitle: { en: "We are attaching the purchased plan and membership metadata.", id: "Kami sedang melampirkan paket yang dibeli dan metadata keanggotaan." },
   status_assigning_plan_pill: { en: "Assigning plan", id: "Menetapkan paket" },
   status_success_title: { en: "Activation successful", id: "Aktivasi berhasil" },
-  status_success_subtitle: { en: "You can now sign in on app.finalytics.id using your registered email.", id: "Anda sekarang dapat masuk di app.finalytics.id menggunakan email terdaftar Anda." },
+  status_success_subtitle: { en: `You can now sign in on ${CURRENT_ANALYSIS_APP_HOSTNAME} using your registered email.`, id: `Anda sekarang dapat masuk di ${CURRENT_ANALYSIS_APP_HOSTNAME} menggunakan email terdaftar Anda.` },
   status_success_pill: { en: "Activation complete", id: "Aktivasi selesai" },
   status_invalid_code_title: { en: "Activation code not recognised", id: "Kode aktivasi tidak dikenali" },
   status_invalid_code_subtitle: { en: "Please verify the code from Mayar. You can try again if you still have attempts left.", id: "Harap verifikasi kode dari Mayar. Anda dapat mencoba lagi jika masih memiliki percobaan tersisa." },
@@ -953,7 +954,7 @@ class MockActivationService {
 
 (async () => {
   try {
-    const firebaseConfig = window.CURRENT_FIREBASE_CONFIG
+    const firebaseConfig = CURRENT_FIREBASE_CONFIG
     const config = { firebaseConfig };
     activationService = await ActivationServiceFactory.create(config);
     setState({ ready: true });

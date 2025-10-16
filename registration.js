@@ -1,4 +1,4 @@
-import './config/firebase.js'
+import { CURRENT_FIREBASE_CONFIG } from './config/firebase.mjs';
 
 // --- LOGGER UTILITY ---
 const logger = {
@@ -555,7 +555,7 @@ class FirebaseActivationService {
 (async () => {
   logger.info('Application starting...');
   try {
-    const firebaseConfig = window.CURRENT_FIREBASE_CONFIG;
+    const firebaseConfig = CURRENT_FIREBASE_CONFIG;
     
     const appModule = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
     const authModule = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js');
