@@ -1,3 +1,5 @@
+import './config/firebase.js'
+
 // --- LOGGER UTILITY ---
 const logger = {
   info: (message, ...args) => console.log(`[INFO] ${new Date().toISOString()} - ${message}`, ...args),
@@ -553,14 +555,7 @@ class FirebaseActivationService {
 (async () => {
   logger.info('Application starting...');
   try {
-    const firebaseConfig = {
-      apiKey: 'AIzaSyB9_J1AZkSbCM9v3PeV4m33qojHX51bLwg',
-      authDomain: 'finalytics-62350.firebaseapp.com',
-      projectId: 'finalytics-62350',
-      storageBucket: 'finalytics-62350.firebasestorage.app',
-      messagingSenderId: '586305419053',
-      appId: '1:586305419053:web:b94a325fd5b649340305a4',
-    };
+    const firebaseConfig = window.CURRENT_FIREBASE_CONFIG;
     
     const appModule = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
     const authModule = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js');

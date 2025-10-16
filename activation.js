@@ -1,3 +1,5 @@
+import './config/firebase.js'
+
 // --- TRANSLATIONS OBJECT ---
 const translations = {
   nav_dashboard: { en: "Go to Dashboard", id: "Ke Dashboard" },
@@ -951,15 +953,8 @@ class MockActivationService {
 
 (async () => {
   try {
-    const firebaseConfig = {
-      apiKey: 'AIzaSyB9_J1AZkSbCM9v3PeV4m33qojHX51bLwg',
-      authDomain: 'finalytics-62350.firebaseapp.com',
-      projectId: 'finalytics-62350',
-      storageBucket: 'finalytics-62350.firebasestorage.app',
-      messagingSenderId: '586305419053',
-      appId: '1:586305419053:web:b94a325fd5b649340305a4',
-    }
-    const config = window.ACTIVATION_APP_CONFIG || { firebaseConfig };
+    const firebaseConfig = window.CURRENT_FIREBASE_CONFIG
+    const config = { firebaseConfig };
     activationService = await ActivationServiceFactory.create(config);
     setState({ ready: true });
   } catch (error) {
