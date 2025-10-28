@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.14",
-    "tailwindcss": "^4.1.14"
+    "@tailwindcss/cli": "^4.1.16",
+    "tailwindcss": "^4.1.16"
   },
   "scripts": {
     "css:dev": "pnpm dlx @tailwindcss/cli --input ./style.css --output ./output.css --watch",
