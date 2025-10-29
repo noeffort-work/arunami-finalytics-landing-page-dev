@@ -1,5 +1,9 @@
 import { CURRENT_ANALYSIS_APP_HOSTNAME } from './config/analysis-app.mjs';
-import { CURRENT_FIREBASE_CONFIG } from './config/firebase.mjs';
+import {
+  CURRENT_FIREBASE_CONFIG,
+  FIREBASE_EMULATOR_CONFIG,
+  USE_FIREBASE_EMULATORS,
+} from './config/firebase.mjs';
 
 // --- TRANSLATIONS OBJECT ---
 const translations = {
@@ -702,6 +706,15 @@ class FirebaseActivationService {
       const db = firestoreModule.getFirestore(app);
       // ADDED: Initialize auth service
       const auth = authModule.getAuth(app);
+      
+      if (config.useEmulators && config.emulatorConfig) {
+        const { host, authPort, firestorePort } = config.emulatorConfig;
+        authModule.connectAuthEmulator(auth, `http://${host}:${authPort}`, { disableWarnings: true });
+        firestoreModule.connectFirestoreEmulator(db, host, firestorePort);
+        console.info(
+          `Activation flow connected to Firebase emulators at ${host} (auth:${authPort}, firestore:${firestorePort}).`,
+        );
+      }
 
       return new FirebaseActivationService(app, db, auth, firestoreModule, authModule, config);
     } catch (error) {
@@ -955,7 +968,11 @@ class MockActivationService {
 (async () => {
   try {
     const firebaseConfig = CURRENT_FIREBASE_CONFIG
-    const config = { firebaseConfig };
+    const config = {
+      firebaseConfig,
+      useEmulators: USE_FIREBASE_EMULATORS,
+      emulatorConfig: FIREBASE_EMULATOR_CONFIG,
+    };
     activationService = await ActivationServiceFactory.create(config);
     setState({ ready: true });
   } catch (error) {

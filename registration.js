@@ -1,4 +1,8 @@
-import { CURRENT_FIREBASE_CONFIG } from './config/firebase.mjs';
+import {
+  CURRENT_FIREBASE_CONFIG,
+  FIREBASE_EMULATOR_CONFIG,
+  USE_FIREBASE_EMULATORS,
+} from './config/firebase.mjs';
 
 // --- LOGGER UTILITY ---
 const logger = {
@@ -481,11 +485,11 @@ function setLanguage(lang) {
 }
 
 class FirebaseRegistrationService {
-    constructor(authModule, db, firestoreModule) {
+    constructor(authModule, db, firestoreModule, authInstance) {
         this.authModule = authModule;
         this.db = db;
         this.fs = firestoreModule;
-        this.auth = authModule.getAuth();
+        this.auth = authInstance || authModule.getAuth();
     }
     async register({ fullName, email, phoneNumber, password }) {
         const { createUserWithEmailAndPassword } = this.authModule;
@@ -564,8 +568,18 @@ class FirebaseActivationService {
     const { initializeApp, getApps } = appModule;
     const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
     const db = firestoreModule.getFirestore(app);
+    const auth = authModule.getAuth(app);
 
-    registrationService = new FirebaseRegistrationService(authModule, db, firestoreModule);
+    if (USE_FIREBASE_EMULATORS) {
+      const { host, authPort, firestorePort } = FIREBASE_EMULATOR_CONFIG;
+      authModule.connectAuthEmulator(auth, `http://${host}:${authPort}`, { disableWarnings: true });
+      firestoreModule.connectFirestoreEmulator(db, host, firestorePort);
+      logger.info(
+        `Connected Firebase services to local emulators at ${host} (auth:${authPort}, firestore:${firestorePort}).`,
+      );
+    }
+
+    registrationService = new FirebaseRegistrationService(authModule, db, firestoreModule, auth);
     activationService = new FirebaseActivationService(app, db, firestoreModule, {});
     
     logger.info('Firebase services initialized successfully.');
