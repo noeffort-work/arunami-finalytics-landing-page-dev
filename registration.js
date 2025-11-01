@@ -31,8 +31,8 @@ const translations = {
   form_phone_label: { en: "Phone number", id: "Nomor telepon" },
   form_phone_placeholder: { en: "e.g. 08123456789", id: "contoh: 08123456789" },
   form_password_label: { en: "Create a password", id: "Buat kata sandi" },
-  form_password_placeholder: { en: "Use at least 8 characters", id: "Gunakan minimal 8 karakter" },
-  form_password_hint: { en: "Minimum 8 characters. Include a mix of upper & lower case letters, numbers, and symbols.", id: "Minimal 8 karakter. Sertakan campuran huruf besar & kecil, angka, dan simbol." },
+  form_password_placeholder: { en: "Use at least 6 characters", id: "Gunakan minimal 6 karakter" },
+  form_password_hint: { en: "Minimum 6 characters.", id: "Minimal 6 karakter." },
   form_password_show: { en: "Show password", id: "Tampilkan kata sandi" },
   form_password_hide: { en: "Hide password", id: "Sembunyikan kata sandi" },
   form_password_confirm_label: { en: "Confirm password", id: "Konfirmasi kata sandi" },
@@ -48,7 +48,7 @@ const translations = {
   error_invalid_email: { en: "Please provide a valid email address.", id: "Harap berikan alamat email yang valid." },
   error_invalid_phone: { en: "Please enter a valid phone number.", id: "Harap masukkan nomor telepon yang valid." },
   error_password_mismatch: { en: "Passwords do not match.", id: "Kata sandi tidak cocok." },
-  error_password_weak: { en: "Password must be at least 8 characters and include upper, lower, number, and symbol characters.", id: "Kata sandi harus minimal 8 karakter dan menyertakan karakter huruf besar, kecil, angka, dan simbol." },
+  error_password_weak: { en: "Password must be at least 6 characters.", id: "Kata sandi harus minimal 6 karakter." },
   error_registration_failed: { en: "Failed to create account. Please try again or contact support.", id: "Gagal membuat akun. Silakan coba lagi atau hubungi dukungan." },
   error_activation_failed_contact: { en: "Activation failed due to an unrecoverable error. Please contact support@finalytics.id.", id: "Aktivasi gagal karena kesalahan yang tidak dapat dipulihkan. Silakan hubungi support@finalytics.id." },
   error_email_in_use: { en: "This email address is already in use. Please try another.", id: "Alamat email ini sudah digunakan. Silakan coba yang lain." },
@@ -357,11 +357,7 @@ function validateName(value) { return value.trim().length > 2; }
 function validateEmail(value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
 function validatePhone(value) { return /^[0-9\s-()+]{6,}$/.test(value); }
 function validatePassword(value) {
-  const hasUpper = /[A-Z]/.test(value);
-  const hasLower = /[a-z]/.test(value);
-  const hasNumber = /[0-9]/.test(value);
-  const hasSymbol = /[^A-Za-z0-9]/.test(value);
-  return value.length >= 8 && hasUpper && hasLower && hasNumber && hasSymbol;
+  return value.length >= 6;
 }
 
 dom.form.addEventListener('submit', async (event) => {
