@@ -1,18 +1,13 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "prebuild": "pnpm run css:prod",
-    "build": "vite build",
-    "preview": "vite preview",
+    "dev": "pnpm run css:dev",
+    "build": "pnpm run css:prod",
     "css:dev": "pnpm dlx @tailwindcss/cli --input ./style.css --output ./output.css --watch",
     "css:prod": "pnpm dlx @tailwindcss/cli --input ./style.css --output ./output.css --minify --map"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.16",
     "tailwindcss": "^4.1.16"
-  },
-  "devDependencies": {
-    "vite": "^7.1.12"
   }
 }
