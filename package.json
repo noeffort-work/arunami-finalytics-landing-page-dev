@@ -7,7 +7,7 @@
     "css:prod": "pnpm dlx @tailwindcss/cli --input ./style.css --output ./output.css --minify --map"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.16",
-    "tailwindcss": "^4.1.16"
+    "@tailwindcss/cli": "^4.1.17",
+    "tailwindcss": "^4.1.17"
   }
 }
